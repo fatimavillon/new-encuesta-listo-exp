@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Experiencia – Tienda Listo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange:       #FF6200;
+            --brand-dark:   #D44D00;
+            --brand-pale:   #FFF6F0;
+            --brand-mid:    #FFD5BC;
+            --bg:           #FAFAF9;
+            --surface:      #FFFFFF;
+            --surface2:     #F7F3F0;
+            --border:       #EAE1DA;
+            --border-strong:#D4C5B9;
+            --text:         #1C140E;
+            --text-mid:     #6E5E53;
+            --text-soft:    #A29084;
+            --shadow-sm:    0 1px 4px rgba(120,70,30,0.06), 0 4px 12px rgba(120,70,30,0.05);
+            --shadow-md:    0 4px 16px rgba(120,70,30,0.10), 0 1px 4px rgba(120,70,30,0.06);
+            --shadow-lg:    0 12px 40px rgba(255,98,0,0.15), 0 2px 8px rgba(255,98,0,0.08);
+            --radius:       18px;
+            --nav-h:        64px;
+            --progress-h:   4px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(255,98,0,0.04) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+        #progress-bar-wrap { position: fixed; top: var(--nav-h); left: 0; right: 0; height: var(--progress-h); background: rgba(255,255,255,0.3); z-index: 100; }
+        #progress-fill { height: 100%; background: rgba(255,255,255,0.9); width: 0%; transition: width 0.55s cubic-bezier(.4,0,.2,1); border-radius: 0 3px 3px 0; }
+        nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; z-index: 99; box-shadow: 0 2px 16px rgba(255,98,0,0.3); }
+        .logo-slot { height: 36px; display: flex; align-items: center; gap: 12px; }
+        .primax-logo-img { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
+        .logo-text { font-family: 'Clash Display', sans-serif; font-weight: 700; color: #fff; font-size: 20px; letter-spacing: -0.5px; }
+        .step-pill { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.9); font-weight: 500; padding: 6px 14px; background: rgba(255,255,255,0.15); border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; }
+        #survey-wrap { max-width: 660px; margin: 0 auto; padding: calc(var(--nav-h) + var(--progress-h) + 48px) 24px 80px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+        .screen { display: none; }
+        .screen.active { display: flex; flex-direction: column; gap: 24px; animation: fadeUp 0.42s cubic-bezier(.4,0,.2,1) forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+        .q-label { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .q-label::before { content: ''; display: inline-block; width: 14px; height: 2.5px; background: var(--orange); border-radius: 2px; }
+        .q-title { font-family: 'Clash Display', sans-serif; font-size: clamp(22px, 4vw, 36px); font-weight: 700; line-height: 1.18; color: var(--text); letter-spacing: -0.6px; }
+        .q-title em { font-style: normal; color: var(--orange); }
+        .q-sub { font-size: 14px; color: var(--text-mid); line-height: 1.65; font-weight: 300; margin-top: -8px; }
+        .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 18px; box-shadow: var(--shadow-sm); }
+        .section-title { font-family: 'Clash Display', sans-serif; font-size: 14px; font-weight: 700; color: var(--brand-dark); display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .section-title .icon { width: 28px; height: 28px; background: var(--brand-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 1px solid var(--brand-mid); }
+        .sub-item { display: flex; flex-direction: column; gap: 8px; }
+        .sub-item-label { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.5; }
+        .emoji-scale { display: flex; gap: 6px; }
+        .emoji-btn { flex: 1; padding: 10px 4px 9px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--surface2); color: var(--text); font-family: 'Clash Display', sans-serif; cursor: pointer; transition: all 0.14s ease; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .emoji-btn .eb-emoji { font-size: 16px; line-height: 1; }
+        .emoji-btn .eb-num   { font-size: 12px; font-weight: 700; }
+        .emoji-btn .eb-word  { font-size: 7.5px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-soft); text-align: center; line-height: 1.2; }
+        .emoji-btn:hover { border-color: var(--orange); background: var(--brand-pale); }
+        .emoji-btn.selected { border-color: var(--orange); background: var(--orange); color: #fff; box-shadow: 0 4px 14px rgba(255,98,0,0.25); }
+        .emoji-btn.selected .eb-word { color: rgba(255,255,255,0.8); }
+        .nps-row { display: flex; gap: 5px; flex-wrap: wrap; }
+        .nps-btn { flex: 1; min-width: 36px; padding: 12px 4px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); font-family: 'Clash Display', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.14s; text-align: center; }
+        .nps-btn:hover { border-color: var(--orange); background: var(--brand-pale); }
+        .nps-btn.selected { border-color: var(--orange); background: var(--orange); color: #fff; box-shadow: var(--shadow-lg); }
+        .scale-label-row { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-soft); letter-spacing: 0.5px; text-transform: uppercase; padding: 0 2px; }
+        .word-scale { display: flex; gap: 7px; }
+        .word-btn { flex: 1; padding: 12px 5px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--surface); cursor: pointer; transition: all 0.14s; display: flex; flex-direction: column; align-items: center; gap: 5px; box-shadow: var(--shadow-sm); }
+        .word-btn .wn { font-family: 'Clash Display', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); }
+        .word-btn .wl { font-size: 8px; letter-spacing: 0.4px; text-transform: uppercase; color: var(--text-soft); text-align: center; line-height: 1.3; }
+        .word-btn:hover { border-color: var(--orange); background: var(--brand-pale); }
+        .word-btn.selected { border-color: var(--orange); background: var(--orange); }
+        .word-btn.selected .wn { color: #fff; }
+        .word-btn.selected .wl { color: rgba(255,255,255,0.7); }
+        .choice-list { display: flex; flex-direction: column; gap: 10px; }
+        .choice-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; transition: all 0.17s ease; background: var(--surface); text-align: left; width: 100%; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; box-shadow: var(--shadow-sm); }
+        .choice-item .choice-num { width: 28px; height: 28px; border-radius: 8px; border: 1.5px solid var(--border-strong); background: var(--surface2); display: flex; align-items: center; justify-content: center; font-family: 'Clash Display', sans-serif; font-size: 12px; font-weight: 700; color: var(--text-mid); flex-shrink: 0; transition: all 0.15s; margin-top: 1px; }
+        .choice-item:hover { border-color: var(--orange); background: var(--brand-pale); transform: translateX(4px); }
+        .choice-item.selected { border-color: var(--orange); background: var(--brand-pale); box-shadow: 0 0 0 3px rgba(255,98,0,0.10); }
+        .choice-item.selected .choice-num { background: var(--orange); border-color: var(--orange); color: #fff; }
+        .checkbox-list { display: flex; flex-direction: column; gap: 8px; }
+        .checkbox-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.14s; background: var(--surface); text-align: left; width: 100%; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; }
+        .checkbox-item:hover { border-color: var(--orange); background: var(--brand-pale); }
+        .checkbox-item.selected { border-color: var(--orange); background: var(--brand-pale); }
+        .cb-box { width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border-strong); background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.14s; margin-top: 1px; }
+        .checkbox-item.selected .cb-box { background: var(--orange); border-color: var(--orange); }
+        .cb-check { font-size: 11px; color: #fff; display: none; }
+        .checkbox-item.selected .cb-check { display: block; }
+        .yesno-row { display: flex; gap: 12px; }
+        .yn-btn { flex: 1; padding: 14px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Clash Display', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.17s ease; display: flex; flex-direction: column; align-items: center; gap: 5px; box-shadow: var(--shadow-sm); }
+        .yn-btn .yn-emoji { font-size: 24px; }
+        .yn-btn:hover { border-color: var(--orange); background: var(--brand-pale); }
+        .yn-btn.selected { border-color: var(--orange); background: var(--orange); color: #fff; box-shadow: var(--shadow-lg); }
+        .checklist-table { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+        .ct-header { display: grid; grid-template-columns: 1fr 60px 60px; gap: 0; background: var(--surface2); padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        .ct-header span { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-soft); font-weight: 600; text-align: center; }
+        .ct-header span:first-child { text-align: left; }
+        .ct-row { display: grid; grid-template-columns: 1fr 60px 60px; gap: 0; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); align-items: center; transition: background 0.12s; }
+        .ct-row:last-child { border-bottom: none; }
+        .ct-row:hover { background: var(--brand-pale); }
+        .ct-label { font-size: 13px; color: var(--text); line-height: 1.45; }
+        .ct-cell { display: flex; align-items: center; justify-content: center; }
+        .ct-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-strong); background: var(--surface2); cursor: pointer; transition: all 0.14s; display: flex; align-items: center; justify-content: center; }
+        .ct-radio.selected-si { background: var(--orange); border-color: var(--orange); }
+        .ct-radio.selected-no { background: #ef4444; border-color: #ef4444; }
+        .ct-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: 0; transition: opacity 0.14s; }
+        .ct-radio.selected-si::after, .ct-radio.selected-no::after { opacity: 1; }
+        .open-field { width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; resize: none; min-height: 100px; transition: border-color 0.17s, box-shadow 0.17s; outline: none; box-shadow: var(--shadow-sm); }
+        .open-field::placeholder { color: var(--text-soft); }
+        .open-field:focus { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(255,98,0,0.08); }
+        .open-field-sm { min-height: 60px; }
+        .cond-block { display: none; flex-direction: column; gap: 12px; padding: 16px 18px; border-left: 3px solid var(--orange); background: var(--brand-pale); border-radius: 0 14px 14px 0; animation: fadeUp 0.3s ease forwards; }
+        .cond-block.visible { display: flex; }
+        .cta-wrap { display: flex; gap: 12px; align-items: center; padding-top: 4px; }
+        .btn-next { padding: 14px 30px; background: var(--orange); color: #fff; border: none; border-radius: 12px; font-family: 'Clash Display', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.17s ease; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(255,98,0,0.3); }
+        .btn-next:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,98,0,0.38); }
+        .btn-back { padding: 14px 16px; background: transparent; color: var(--text-mid); border: 1.5px solid var(--border); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.14s; }
+        .btn-back:hover { color: var(--text); border-color: var(--border-strong); background: var(--surface2); }
+        .intro-title { font-family: 'Clash Display', sans-serif; font-size: clamp(34px, 6.5vw, 54px); font-weight: 700; line-height: 1.0; letter-spacing: -1.5px; color: var(--text); }
+        .intro-title em { font-style: normal; color: var(--orange); }
+        .intro-desc { font-size: 15px; color: var(--text-mid); line-height: 1.7; font-weight: 300; max-width: 500px; }
+        .intro-divider { width: 44px; height: 3px; background: var(--orange); border-radius: 2px; margin: 2px 0; }
+        .data-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: var(--shadow-sm); }
+        .data-input:focus { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(255,98,0,0.08); }
+        .data-input::placeholder { color: var(--text-soft); }
+        .check-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+        .check-label input { margin-top: 2px; accent-color: var(--orange); }
+        .check-label a { color: var(--orange); }
+        .ty-title { font-family: 'Clash Display', sans-serif; font-size: clamp(32px,5vw,48px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
+        .ty-sub { font-size: 15px; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+        .filter-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--brand-pale); border: 1px solid var(--brand-mid); border-radius: 20px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--brand-dark); font-weight: 600; width: fit-content; }
+        @media (max-width: 500px) {
+            nav { padding: 0 14px; }
+            #survey-wrap { padding-left: 14px; padding-right: 14px; }
+            .emoji-scale { gap: 4px; }
+            .word-scale { gap: 4px; }
+            .nps-row { gap: 3px; }
+            .nps-btn { padding: 10px 2px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-slot">
+        <span class="logo-text">Listo!</span>
+    </div>
+    <div class="step-pill" id="step-label">Inicio</div>
+</nav>
+<div id="progress-bar-wrap"><div id="progress-fill"></div></div>
+
+<div id="survey-wrap">
+
+    <div class="screen active" id="s0">
+        <div class="intro-title">En <em>Tienda Listo</em>,<br>Tu experiencia<br><em>nos mueve</em>.</div>
+        <div class="intro-divider"></div>
+        <div class="intro-desc">Queremos seguir mejorando tu experiencia en nuestras tiendas. Esta encuesta toma aproximadamente 5 minutos y tus respuestas son completamente anónimas. ¡Al finalizar participas por una Giftcard de S/250!</div>
+        <div class="cta-wrap">
+            <button class="btn-next" onclick="go(1)">Comenzar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s1">
+        <div class="q-label">Sección 1 · Segmentación</div>
+        <div class="q-title">Cuéntanos sobre tu<br><em>visita de hoy</em></div>
+        <div class="section-card">
+            <div class="section-title"><span class="icon">🏪</span>Tus hábitos en Listo</div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">S1. ¿Qué te motivó a ingresar a Listo en tu última visita?</div>
+                <div class="choice-list" id="cl-motivacion">
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,1,'cl-motivacion')"><span class="choice-num">A</span>Fui a cargar combustible y aproveché para entrar</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,2,'cl-motivacion')"><span class="choice-num">B</span>Fui específicamente a la tienda</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,3,'cl-motivacion')"><span class="choice-num">C</span>Vi algo que me llamó la atención desde afuera</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,4,'cl-motivacion')"><span class="choice-num">D</span>Es parte de mi rutina habitual</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,5,'cl-motivacion')"><span class="choice-num">E</span>Otro</button>
+                </div>
+                <div class="cond-block" id="cond-motivacion-otro">
+                    <div class="sub-item-label">Especifica tu motivo:</div>
+                    <input type="text" class="data-input" id="txt-motivacion-otro" placeholder="Escribe aquí tu motivo…">
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">S2. ¿Con qué frecuencia visitas Tienda Listo?</div>
+                <div class="choice-list" id="cl-frecuencia-listo">
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,1,'cl-frecuencia-listo')"><span class="choice-num">A</span>Todos los días o casi todos los días</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,2,'cl-frecuencia-listo')"><span class="choice-num">B</span>Varias veces por semana</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,3,'cl-frecuencia-listo')"><span class="choice-num">C</span>Una vez por semana</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,4,'cl-frecuencia-listo')"><span class="choice-num">D</span>Cada dos semanas aproximadamente</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,5,'cl-frecuencia-listo')"><span class="choice-num">E</span>Una vez al mes o menos</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,6,'cl-frecuencia-listo')"><span class="choice-num">F</span>Otro</button>
+                </div>
+                <div class="cond-block" id="cond-frecuencia-otro">
+                    <div class="sub-item-label">Especifica tu frecuencia:</div>
+                    <input type="text" class="data-input" id="txt-frecuencia-otro" placeholder="Escribe aquí…">
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">S3. ¿Qué compraste hoy principalmente? [Elige hasta 2 opciones]</div>
+                <div class="checkbox-list" id="chk-compras-listo">
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_bebida',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Bebida (agua, gaseosa, jugo, energizante)</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_snack',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Snack (galletas, chocolates, papas)</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_preparado',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Alimento preparado (sandwich, comida caliente)</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_cafe',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Café u otra bebida caliente</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_otro',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro</button>
+                </div>
+                <div class="cond-block" id="cond-compra-otro">
+                    <div class="sub-item-label">¿Qué otro producto compraste?</div>
+                    <input type="text" class="data-input" id="txt-compra-otro" placeholder="Escribe aquí…">
+                </div>
+            </div>
+
+        </div>
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(0)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(1,2)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s2">
+        <div class="q-label">Sección 2 · Ingreso y Ambiente</div>
+        <div class="q-title">¿Cómo percibiste el <em>ambiente de la tienda</em>?</div>
+        <div class="section-card">
+            <div class="section-title"><span class="icon">✨</span>P1. Aspectos del ambiente al ingresar</div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Limpieza y orden de la tienda</div>
+                <div class="emoji-scale" id="es-amb-limpieza">
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Regular</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Bueno</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Excl.</span></button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Temperatura / climatización</div>
+                <div class="emoji-scale" id="es-amb-clima">
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Regular</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Bueno</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Excl.</span></button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Olor dentro de la tienda</div>
+                <div class="emoji-scale" id="es-amb-olor">
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Regular</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Bueno</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Excl.</span></button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Iluminación</div>
+                <div class="emoji-scale" id="es-amb-ilum">
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Regular</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Bueno</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Excl.</span></button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Percepción de seguridad al interior</div>
+                <div class="emoji-scale" id="es-amb-seguridad">
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Regular</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Bueno</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Excl.</span></button>
+                </div>
+            </div>
+
+        </div>
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(1)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(2,3)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s3">
+        <div class="q-label">Sección 3 · Recorrido y Selección</div>
+        <div class="q-title">¿Fue fácil <em>encontrar tus productos</em>?</div>
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P2. ¿Qué tan fácil fue encontrar lo que buscabas dentro de la tienda?</div>
+                <div class="word-scale" id="ws-buscar-prod">
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,1)"><span class="wn">1</span><span class="wl">Muy<br>difícil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,4)"><span class="wn">4</span><span class="wl">Fácil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,5)"><span class="wn">5</span><span class="wl">Muy<br>fácil</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title"><span class="icon">🛒</span>P3. Oferta de productos en Tienda Listo</div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Variedad del mix de productos ofrecidos</div>
+                <div class="emoji-scale" id="es-prod-variedad"><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Disponibilidad del producto que buscabas</div>
+                <div class="emoji-scale" id="es-prod-disponib"><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Calidad y frescura de los productos</div>
+                <div class="emoji-scale" id="es-prod-calidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Relación precio / calidad</div>
+                <div class="emoji-scale" id="es-prod-precio"><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Claridad en la exhibición y señalización de precios</div>
+                <div class="emoji-scale" id="es-prod-precioview"><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Facilidad para ubicar y encontrar los productos</div>
+                <div class="emoji-scale" id="es-prod-facilidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P4. ¿Hay algún producto o categoría que te gustaría encontrar en Tienda Listo y que actualmente no está disponible? (Opcional)</div>
+                <textarea class="open-field open-field-sm" id="txt-prod-deseado" placeholder="Ej: Snacks saludables, alguna marca de bebida específica…"></textarea>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(2)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(3,4)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s4">
+        <div class="q-label">Sección 4 · Foodservice</div>
+        <div class="q-title">Sobre los <em>alimentos preparados</em></div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P5. ¿Consumiste o compraste algún alimento o bebida preparada (café, sandwich, comida caliente)?</div>
+                <div class="yesno-row" id="yn-foodservice">
+                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'si')"><span class="yn-emoji">🍔</span>Sí</button>
+                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'no')"><span class="yn-emoji">❌</span>No</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="block-foodservice" style="display:none">
+            <div class="filter-badge">🍕 Sección Foodservice</div>
+
+            <div class="section-card" style="margin-top:10px">
+                <div class="sub-item">
+                    <div class="sub-item-label">P6. ¿Encontraste disponible el producto de foodservice que buscabas o que viste promocionado?</div>
+                    <div class="choice-list" id="cl-food-disp">
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,1,'cl-food-disp')"><span class="choice-num">1</span>Sí, encontré exactamente lo que buscaba</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,2,'cl-food-disp')"><span class="choice-num">2</span>Vi la promoción pero el producto no estaba disponible</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,3,'cl-food-disp')"><span class="choice-num">3</span>No había promoción — vine por hábito o impulso</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,4,'cl-food-disp')"><span class="choice-num">4</span>No encontré lo que buscaba, elegí otra cosa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title"><span class="icon">🍽️</span>P7. Califica los siguientes aspectos de foodservice:</div>
+
+                <div class="sub-item">
+                    <div class="sub-item-label">Variedad de opciones de foodservice disponibles</div>
+                    <div class="emoji-scale" id="es-food-variedad"><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Calidad de los productos preparados</div>
+                    <div class="emoji-scale" id="es-food-calidad"><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Temperatura adecuada del producto (caliente/frío)</div>
+                    <div class="emoji-scale" id="es-food-temp"><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Tiempo de preparación y entrega</div>
+                    <div class="emoji-scale" id="es-food-tiempo"><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Relación precio / calidad</div>
+                    <div class="emoji-scale" id="es-food-preciocalidad"><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="sub-item">
+                    <div class="sub-item-label">P8. ¿Tuviste acceso a los acompañamientos que necesitabas (salsas, azúcar, servilletas)?</div>
+                    <div class="choice-list" id="cl-food-acomp">
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,1,'cl-food-acomp')"><span class="choice-num">A</span>Sí, estaban disponibles</button>
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,2,'cl-food-acomp')"><span class="choice-num">B</span>Sí, me facilitaron limitadamente</button>
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,3,'cl-food-acomp')"><span class="choice-num">C</span>No, no me facilitaron</button>
+                    </div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">P9. ¿Tus productos fueron empacados y entregados correctamente (sin derrames, bolsas resistentes)?</div>
+                    <div class="choice-list" id="cl-food-empaque">
+                        <button class="choice-item" onclick="selectSingle('food_empaque',this,1,'cl-food-empaque')"><span class="choice-num">A</span>Sí</button>
+                        <button class="choice-item" onclick="selectSingle('food_empaque',this,2,'cl-food-empaque')"><span class="choice-num">B</span>No</button>
+                        <button class="choice-item" onclick="selectSingle('food_empaque',this,3,'cl-food-empaque')"><span class="choice-num">C</span>No aplica</button>
+                    </div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">P10. ¿Hay algún tipo de alimento o bebida preparada que te gustaría encontrar y que no está disponible? (Opcional)</div>
+                    <textarea class="open-field open-field-sm" id="txt-food-deseado" placeholder="Comentarios…"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(3)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(4,5)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s5">
+        <div class="q-label">Sección 5 · Pago</div>
+        <div class="q-title">¿Cómo fue la <em>experiencia en caja</em>?</div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P11. El tiempo de espera en caja fue razonable.</div>
+                <div class="word-scale" id="ws-caja-tiempo">
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,3)"><span class="wn">3</span><span class="wl">Neutral</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,4)"><span class="wn">4</span><span class="wl">De<br>Acuerdo</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,5)"><span class="wn">5</span><span class="wl">Total<br>Acuerdo</span></button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">P12. ¿El método de pago que prefieres estaba disponible?</div>
+                <div class="yesno-row" id="yn-pago-disponib">
+                    <button class="yn-btn" onclick="selectYNPago('yn-pago-disponib',this,'si')"><span class="yn-emoji">✅</span>Sí</button>
+                    <button class="yn-btn" onclick="selectYNPago('yn-pago-disponib',this,'no')"><span class="yn-emoji">❌</span>No</button>
+                </div>
+                <div class="cond-block" id="cond-pago-metodo">
+                    <div class="sub-item-label">12a. ¿Qué método te habría gustado usar?</div>
+                    <div class="checkbox-list" id="chk-pago-necesitado">
+                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_yape')"><span class="cb-box"><span class="cb-check">✓</span></span>Yape</button>
+                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_plin')"><span class="cb-box"><span class="cb-check">✓</span></span>Plin</button>
+                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_tarjeta')"><span class="cb-box"><span class="cb-check">✓</span></span>Tarjeta de débito/crédito</button>
+                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_efectivo')"><span class="cb-box"><span class="cb-check">✓</span></span>Efectivo</button>
+                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_otro')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">P13. Durante el momento del pago y la despedida, indica si ocurrió:</div>
+                <div class="checklist-table">
+                    <div class="ct-header"><span>Aspecto</span><span>Sí</span><span>No</span></div>
+                    <div class="ct-row" id="ctr-comprobante"><div class="ct-label">El cajero te consultó si necesitabas boleta o factura antes de emitir</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-comprobante','si')" id="ctr-comprobante-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-comprobante','no')" id="ctr-comprobante-no"></div></div></div>
+                    <div class="ct-row" id="ctr-bonus-ofrecido"><div class="ct-label">El cajero te ofreció sumar puntos Bonus o alguna promoción del día</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-bonus-ofrecido','si')" id="ctr-bonus-ofrecido-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-bonus-ofrecido','no')" id="ctr-bonus-ofrecido-no"></div></div></div>
+                    <div class="ct-row" id="ctr-despedida-listo"><div class="ct-label">Fuiste despedido/a de forma cordial al finalizar tu compra</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-despedida-listo','si')" id="ctr-despedida-listo-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-despedida-listo','no')" id="ctr-despedida-listo-no"></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(4)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(5,6)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s6">
+        <div class="q-label">Sección 6 · El Listero</div>
+        <div class="q-title">Atención de nuestro <em>colaborador</em></div>
+        <div class="section-card">
+            <div class="section-title"><span class="icon">🤝</span>P14. Califica la atención recibida por el colaborador de Listo:</div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">Amabilidad y trato durante la atención</div>
+                <div class="emoji-scale" id="es-col-trato"><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Saludo de bienvenida y despedida</div>
+                <div class="emoji-scale" id="es-col-saludo"><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Capacidad para orientar y absolver consultas</div>
+                <div class="emoji-scale" id="es-col-orienta"><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Presentación e imagen personal del colaborador</div>
+                <div class="emoji-scale" id="es-col-imagen"><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,4 reflection)">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Proactividad (se acercó a ofrecer ayuda sin que lo buscaras)</div>
+                <div class="emoji-scale" id="es-col-proact"><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Ofrecimiento de promociones y beneficios Primax / Bonus</div>
+                <div class="emoji-scale" id="es-col-ofrecimiento"><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+            <div class="sub-item">
+                <div class="sub-item-label">Presencia disponible del colaborador para atenderte</div>
+                <div class="emoji-scale" id="es-col-disponib"><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(5)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(6,7)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s7">
+        <div class="q-label">Sección 7 · Áreas de Consumo</div>
+        <div class="q-title">Uso de <em>servicios adicionales</em></div>
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P15. ¿Usaste alguno de estos servicios durante tu visita? [Marca todos los que apliquen]</div>
+                <div class="checkbox-list" id="chk-servicios-listo">
+                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_bano')"><span class="cb-box"><span class="cb-check">✓</span></span>Baño</button>
+                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_consumo')"><span class="cb-box"><span class="cb-check">✓</span></span>Área de consumo / mesas / microondas</button>
+                    <button class="checkbox-item" onclick="toggleNingunoListo(this,'chk-servicios-listo','listo_ninguno')"><span class="cb-box"><span class="cb-check">✓</span></span>Ninguno</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="block-listo-bano" style="display:none">
+            <div class="filter-badge">🚻 Servicio de Baños</div>
+            <div class="section-card" style="margin-top:10px">
+                <div class="sub-item">
+                    <div class="sub-item-label">P16. ¿Cómo calificarías la limpieza y condición del baño?</div>
+                    <div class="word-scale" id="ws-bano-cond">
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,1)"><span class="wn">1</span><span class="wl">Muy Malo</span></button>
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,2)"><span class="wn">2</span><span class="wl">Malo</span></button>
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,4)"><span class="wn">4</span><span class="wl">Bueno</span></button>
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,5)"><span class="wn">5</span><span class="wl">Excelente</span></button>
+                    </div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">P17. ¿Encontraste disponibles los siguientes implementos en el baño?</div>
+                    <div class="checklist-table">
+                        <div class="ct-header"><span>Implemento</span><span>Sí</span><span>No</span></div>
+                        <div class="ct-row" id="ctr-jabon"><div class="ct-label">Jabón de manos</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','si')" id="ctr-jabon-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','no')" id="ctr-jabon-no"></div></div></div>
+                        <div class="ct-row" id="ctr-papel"><div class="ct-label">Papel higiénico / papel de manos</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','si')" id="ctr-papel-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','no')" id="ctr-papel-no"></div></div></div>
+                        <div class="ct-row" id="ctr-agua"><div class="ct-label">Agua en el grifo</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','si')" id="ctr-agua-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','no')" id="ctr-agua-no"></div></div></div>
+                    </div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">P18. ¿Te gustaría dejarnos algún comentario sobre el servicio de baños? (Opcional)</div>
+                    <textarea class="open-field open-field-sm" id="txt-listo-bano" placeholder="Escribe aquí…"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div id="block-listo-consumo" style="display:none">
+            <div class="filter-badge">☕ Área de consumo</div>
+            <div class="section-card" style="margin-top:10px">
+                <div class="section-title"><span class="icon">🪑</span>P19. Califica los siguientes aspectos de la zona de consumo:</div>
+
+                <div class="sub-item">
+                    <div class="sub-item-label">Disponibilidad de mesas y sillas</div>
+                    <div class="emoji-scale" id="es-zon-mesas"><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Limpieza de mesas</div>
+                    <div class="emoji-scale" id="es-zon-limpieza"><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Limpieza y orden general de la zona</div>
+                    <div class="emoji-scale" id="es-zon-gral"><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Comodidad del espacio</div>
+                    <div class="emoji-scale" id="es-zon-comodidad"><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Temperatura / climatización del área</div>
+                    <div class="emoji-scale" id="es-zon-clima"><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+                <div class="sub-item">
+                    <div class="sub-item-label">Olor en la zona de consumo</div>
+                    <div class="emoji-scale" id="es-zon-olor"><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(6)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(7,8)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s8">
+        <div class="q-label">Sección 8 · Post-Visita</div>
+        <div class="q-title">Tu experiencia a <em>largo plazo</em></div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P20. ¿Has tenido alguna mala experiencia con un producto de Tienda Listo (vencimiento, mala calidad, etc.)?</div>
+                <div class="yesno-row" id="yn-mala-exp">
+                    <button class="yn-btn" onclick="selectYNMala('yn-mala-exp',this,'si')"><span class="yn-emoji">⚠️</span>Sí</button>
+                    <button class="yn-btn" onclick="selectYNMala('yn-mala-exp',this,'no')"><span class="yn-emoji">❌</span>No</button>
+                </div>
+                <div class="cond-block" id="cond-resolucion">
+                    <div class="sub-item-label">21a. ¿Pudiste resolver esa situación fácilmente?</div>
+                    <div class="choice-list" id="cl-resolucion">
+                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,1,'cl-resolucion')"><span class="choice-num">1</span>Sí, fue resuelto sin problemas</button>
+                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,2,'cl-resolucion')"><span class="choice-num">2</span>Fue resuelto parcialmente</button>
+                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,3,'cl-resolucion')"><span class="choice-num">3</span>No pude resolverlo</button>
+                    </div>
+                    <div class="sub-item-label" style="margin-top:8px">Coméntanos brevemente qué sucedió:</div>
+                    <input type="text" class="data-input" id="txt-mala-exp-desc" placeholder="Detalle del incidente…">
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">P22. Siento que Tienda Listo me reconoce como cliente frecuente y me ofrece beneficios por ello.</div>
+                <div class="word-scale" id="ws-reconoce-frecuente">
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,3)"><span class="wn">3</span><span class="wl">Neutral</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,4)"><span class="wn">4</span><span class="wl">De<br>Acuerdo</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,5)"><span class="wn">5</span><span class="wl">Total<br>Acuerdo</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(7)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(8,9)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s9">
+        <div class="q-label">Sección 9 · Atributos más valorados</div>
+        <div class="q-title">¿Qué es lo que <em>más valoras</em>?</div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P23. De los siguientes aspectos de una tienda de conveniencia, ¿cuáles son los <strong>3 que más valoras</strong> al elegir dónde comprar? [Elige exactamente 3]</div>
+                <div class="checkbox-list" id="chk-atributos-listo">
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_mix',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Variedad del mix de productos ofrecidos</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_disp',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Disponibilidad del producto que buscas</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_calidad',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Calidad y frescura de los productos</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_precio',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Relación precio / calidad</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_atencion',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Atención y amabilidad del colaborador</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_pago',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Rapidez en el proceso de pago</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_food',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Calidad del foodservice (comida y bebidas preparadas)</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_limpieza',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Limpieza y ambiente de la tienda</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_promos',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Promociones y ofertas atractivas</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_ubicacion',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Ubicación / cercanía de la tienda</button>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <div class="sub-item-label">P24. Y de los que elegiste, ¿cuál es el MÁS importante para ti?</div>
+                <textarea class="open-field open-field-sm" id="txt-val-maximo" placeholder="Escribe aquí el aspecto prioritario…"></textarea>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(8)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(9,10)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s10">
+        <div class="q-label">Sección 10 · Indicadores</div>
+        <div class="q-title">Evaluación <em>Global</em></div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P25. ¿Con qué probabilidad recomendarías Tienda Listo a un familiar, amigo o colega?</div>
+                <div class="nps-row" id="nps-listo">
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,0)">0</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,1)">1</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,2)">2</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,3)">3</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,4)">4</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,5)">5</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,6)">6</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,7)">7</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,8)">8</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,9)">9</button>
+                    <button class="nps-btn" onclick="selectNPS('nps-listo',this,10)">10</button>
+                </div>
+                <div class="scale-label-row"><span>← Nada probable (Detractor)</span><span>Muy probable (Promotor) →</span></div>
+
+                <div class="sub-item-label" style="margin-top:10px">P25a. ¿Por qué elegiste ese número? (Opcional)</div>
+                <textarea class="open-field open-field-sm" id="txt-nps-motivo" placeholder="Cuéntanos por qué…"></textarea>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P26. Considerando tu última visita a Listo ¿cuán satisfecho/a quedaste con la experiencia vivida?</div>
+                <div class="emoji-scale" id="es-csat-listo">
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Insat.</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Insat.</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Neutral</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Satisf.</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Muy Sat.</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P27. ¿Qué tan fácil fue hacer tu compra en Tienda Listo hoy?</div>
+                <div class="word-scale" id="ws-ces-listo">
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,1)"><span class="wn">1</span><span class="wl">Muy Difícil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,4)"><span class="wn">4</span><span class="wl">Fácil</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,5)"><span class="wn">5</span><span class="wl">Muy Fácil</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(9)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(10,11)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s11">
+        <div class="q-label">Sección 11 y 12 · Cierre</div>
+        <div class="q-title">Sugerencias y <em>Mejoras</em></div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P28. ¿Qué opinas sobre las promociones y ofertas disponibles en Tienda Listo? ¿Hay alguna oferta de otras tiendas de conveniencia que creas que Listo debería tener? (Opcional)</div>
+                <textarea class="open-field" id="txt-feedback-promos" placeholder="Tus sugerencias sobre combos, descuentos…"></textarea>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="sub-item">
+                <div class="sub-item-label">P29. Si pudieras mejorar UN solo aspecto de tu experiencia en Tienda Listo, ¿cuál sería?</div>
+                <textarea class="open-field" id="txt-mejora-listo" placeholder="Escribe aquí tu propuesta de mejora…"></textarea>
+            </div>
+        </div>
+
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(10)">← Atrás</button>
+            <button class="btn-next" onclick="go(12)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s12">
+        <div class="q-title">¡Casi <em>terminamos</em>!</div>
+        <div class="q-sub">Déjanos tus datos para participar en el sorteo de la Giftcard de S/250.</div>
+        <div class="section-card">
+            <div style="display:flex;flex-direction:column;gap:12px">
+                <input type="text" id="dni" class="data-input" placeholder="Número de DNI (8 dígitos)" maxlength="8">
+                <input type="tel" id="celular" class="data-input" placeholder="Número de celular (9 dígitos)" maxlength="9">
+                <div style="font-size:12px;color:var(--text-soft);margin-top:4px">Marca ambos casilleros para confirmar tu participación.</div>
+                <label class="check-label"><input type="checkbox" id="check-datos"> Autorizo el uso de mis datos personales según la <a href="https://primax.com.pe/wp-content/uploads/2023/02/Politica-de-Privacidad-y-Uso-de-Cookies-de-los-canales-de-atencion-al-cliente.pdf" target="_blank">Política de Privacidad</a>.</label>
+                <label class="check-label"><input type="checkbox" id="check-terminos"> Acepto los <a href="https://docs.google.com/document/d/1LGtWs-e0enM1Zt2IhBd0-5tE31EMZFVHvvA2_LUWwQo/edit?usp=sharing" target="_blank">términos y condiciones</a> del sorteo de la Giftcard de S/250.</label>
+            </div>
+        </div>
+        <div class="cta-wrap">
+            <button class="btn-back" onclick="go(11)">← Atrás</button>
+            <button class="btn-next" onclick="validarYEnviar()">Finalizar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+
+    <div class="screen" id="s13">
+        <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="font-size:48px">🎉</div>
+            <div class="ty-title">¡Gracias por<br>compartir tu<br><em style="font-style:normal;color:var(--orange)">opinión!</em></div>
+            <div class="intro-divider"></div>
+            <div class="ty-sub">Tu opinión nos ayuda a mejorar cada día la experiencia en Tienda Listo. Ya estás participando en el sorteo. ¡Mucha suerte!</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const TOTAL_STEPS = 13;
+    let currentScreen = 0;
+    const answers = {};
+    const checkboxAnswers = {};
+
+    const LABELS = {
+        0:'Inicio', 1:'Segmentación', 2:'Ambiente', 3:'Recorrido',
+        4:'Foodservice', 5:'Pago en Caja', 6:'Atención Colaborador', 7:'Servicios Adicionales',
+        8:'Post-Visita', 9:'Preferencias', 10:'Indicadores', 11:'Sugerencias', 12:'Mis Datos', 13:'¡Listo!'
+    };
+
+    // Usa tu URL de Google Apps Script para almacenar las respuestas unificadas
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzam8C2VH_gmspFBDZvD96vRTiXgA2Ej9XimlxJJHDFbij7HmJS0oPnTPDLsS_cvuhZxg/exec";
+
+    function go(n) {
+        if (n > currentScreen && !validateStep()) {
+            return;
+        }
+        document.getElementById('s'+currentScreen).classList.remove('active');
+        currentScreen = n;
+        document.getElementById('s'+n).classList.add('active');
+        updateProgress();
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function goNext(from, to) {
+        go(to);
+    }
+
+    function validateStep() {
+        if (currentScreen === 1) {
+            if (!answers['motivacion'] || !answers['frecuencia_listo']) {
+                alert('Por favor, responda las preguntas de segmentación para continuar.');
+                return false;
+            }
+        }
+        if (currentScreen === 2) {
+            if (!answers['es-amb-limpieza'] || !answers['es-amb-clima'] || !answers['es-amb-olor'] || !answers['es-amb-ilum'] || !answers['es-amb-seguridad']) {
+                alert('Por favor califique todos los aspectos del ambiente.');
+                return false;
+            }
+        }
+        if (currentScreen === 3) {
+            if (!answers['ws-buscar-prod'] || !answers['es-prod-variedad'] || !answers['es-prod-disponib']) {
+                alert('Por favor responda las métricas de productos.');
+                return false;
+            }
+        }
+        if (currentScreen === 4 && answers['foodservice'] === 'si') {
+            if (!answers['food_promesa'] || !answers['es-food-calidad'] || !answers['food_acomp'] || !answers['food_empaque']) {
+                alert('Por favor completa los campos del módulo Foodservice.');
+                return false;
+            }
+        }
+        if (currentScreen === 5) {
+            if (!answers['ws-caja-tiempo'] || !answers['pago_disponib'] || !answers['ctr-comprobante'] || !answers['ctr-bonus-ofrecido'] || !answers['ctr-despedida-listo']) {
+                alert('Por favor complete la evaluación del proceso de pago.');
+                return false;
+            }
+        }
+        if (currentScreen === 6) {
+            if (!answers['es-col-trato'] || !answers['es-col-saludo'] || !answers['es-col-orienta'] || !answers['es-col-imagen'] || !answers['es-col-proact'] || !answers['es-col-ofrecimiento'] || !answers['es-col-disponib']) {
+                alert('Por favor califique todos los ítems de la atención del colaborador.');
+                return false;
+            }
+        }
+        if (currentScreen === 7) {
+            const usedBano = checkboxAnswers['listo_bano'];
+            const usedConsumo = checkboxAnswers['listo_consumo'];
+            const noUsed = checkboxAnswers['listo_ninguno'];
+            if (!usedBano && !usedConsumo && !noUsed) {
+                alert('Por favor seleccione qué servicios adicionales utilizó.');
+                return false;
+            }
+            if (usedBano && (!answers['ws-bano-cond'] || !answers['ctr-jabon'] || !answers['ctr-papel'] || !answers['ctr-agua'])) {
+                alert('Por favor complete la calificación del baño.');
+                return false;
+            }
+            if (usedConsumo && (!answers['es-zon-mesas'] || !answers['es-zon-limpieza'] || !answers['es-zon-gral'])) {
+                alert('Por favor califique los aspectos de la zona de consumo.');
+                return false;
+            }
+        }
+        if (currentScreen === 8) {
+            if (!answers['mala_exp'] || (answers['mala_exp'] === 'si' && !answers['resolucion_problema']) || !answers['ws-reconoce-frecuente']) {
+                alert('Por favor complete los campos requeridos en esta sección.');
+                return false;
+            }
+        }
+        if (currentScreen === 10) {
+            if (answers['nps-listo'] === undefined || !answers['es-csat-listo'] || !answers['ws-ces-listo']) {
+                alert('Por favor complete los indicadores NPS, CSAT y CES obligatorios.');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function updateProgress() {
+        const pct = Math.round((currentScreen / TOTAL_STEPS) * 100);
+        document.getElementById('progress-fill').style.width = pct + '%';
+        document.getElementById('step-label').textContent = LABELS[currentScreen] || 'Encuesta';
+    }
+
+    function selectSingle(key, btn, val, listId) {
+        document.querySelectorAll('#'+listId+' .choice-item').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[key] = val;
+
+        if (key === 'motivacion') {
+            document.getElementById('cond-motivacion-otro').classList.toggle('visible', val===5);
+        }
+        if (key === 'frecuencia_listo') {
+            document.getElementById('cond-frecuencia-otro').classList.toggle('visible', val===6);
+        }
+    }
+
+    function selectEmoji(groupId, btn, val) {
+        document.getElementById(groupId).querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[groupId] = val;
+    }
+
+    function selectWord(groupId, btn, val) {
+        document.querySelectorAll('#'+groupId+' .word-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[groupId] = val;
+    }
+
+    function selectNPS(groupId, btn, val) {
+        document.querySelectorAll('#'+groupId+' .nps-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[groupId] = val;
+    }
+
+    function selectYNFood(groupId, btn, val) {
+        document.querySelectorAll('#' + groupId + ' .yn-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers['foodservice'] = val;
+        document.getElementById('block-foodservice').style.display = (val === 'si') ? 'block' : 'none';
+    }
+
+    function selectYNPago(groupId, btn, val) {
+        document.querySelectorAll('#' + groupId + ' .yn-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers['pago_disponib'] = val;
+        document.getElementById('cond-pago-metodo').classList.toggle('visible', val === 'no');
+    }
+
+    function selectYNMala(groupId, btn, val) {
+        document.querySelectorAll('#' + groupId + ' .yn-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers['mala_exp'] = val;
+        document.getElementById('cond-resolucion').classList.toggle('visible', val === 'si');
+    }
+
+    function selectCtRow(rowId, val) {
+        const si = document.getElementById(rowId+'-si');
+        const no = document.getElementById(rowId+'-no');
+        si.className = 'ct-radio' + (val==='si' ? ' selected-si' : '');
+        no.className = 'ct-radio' + (val==='no' ? ' selected-no' : '');
+        answers[rowId] = val;
+    }
+
+    function toggleCheck(btn, key) {
+        btn.classList.toggle('selected');
+        checkboxAnswers[key] = btn.classList.contains('selected');
+    }
+
+    function toggleCheckListo(btn, key) {
+        btn.classList.toggle('selected');
+        checkboxAnswers[key] = btn.classList.contains('selected');
+
+        document.getElementById('block-listo-bano').style.display = checkboxAnswers['listo_bano'] ? 'block' : 'none';
+        document.getElementById('block-listo-consumo').style.display = checkboxAnswers['listo_consumo'] ? 'block' : 'none';
+
+        if(btn.classList.contains('selected')) {
+            const noneBtn = document.querySelector('#chk-servicios-listo .checkbox-item:last-child');
+            noneBtn.classList.remove('selected');
+            checkboxAnswers['listo_ninguno'] = false;
+        }
+    }
+
+    function toggleNingunoListo(btn, listId, key) {
+        document.querySelectorAll('#'+listId+' .checkbox-item').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        Object.keys(checkboxAnswers).forEach(k => { if(k.startsWith('listo_')) checkboxAnswers[k] = false; });
+        checkboxAnswers[key] = true;
+
+        document.getElementById('block-listo-bano').style.display = 'none';
+        document.getElementById('block-listo-consumo').style.display = 'none';
+    }
+
+    function toggleCheckMax(btn, key, max, listId) {
+        if (!btn.classList.contains('selected')) {
+            const selected = document.querySelectorAll('#'+listId+' .checkbox-item.selected').length;
+            if (selected >= max) { alert('Puedes elegir máximo '+max+' opciones.'); return; }
+        }
+        btn.classList.toggle('selected');
+        checkboxAnswers[key] = btn.classList.contains('selected');
+
+        if(key.startsWith('compra_')) {
+            document.getElementById('cond-compra-otro').classList.toggle('visible', checkboxAnswers['compra_otro']);
+        }
+    }
+
+    function validarYEnviar() {
+        const dni = document.getElementById('dni').value.trim();
+        const cel = document.getElementById('celular').value.trim();
+        const chkDatos = document.getElementById('check-datos').checked;
+        const chkTerminos = document.getElementById('check-terminos').checked;
+        if (dni.length < 8 || cel.length < 9 || !chkDatos || !chkTerminos) {
+            alert('Por favor, completa tu DNI, celular y acepta ambos casilleros de políticas/términos.');
+            return;
+        }
+        submitSurvey();
+    }
+
+    function buildPayload() {
+        return {
+            fuente: 'tienda_listo',
+            dni: document.getElementById('dni').value.trim(),
+            celular: document.getElementById('celular').value.trim(),
+            motivacion_ingreso: answers['motivacion']||'',
+            motivacion_otro: document.getElementById('txt-motivacion-otro')?.value?.trim()||'',
+            frecuencia_listo: answers['frecuencia_listo']||'',
+            frecuencia_otro: document.getElementById('txt-frecuencia-otro')?.value?.trim()||'',
+            compras_bebida: checkboxAnswers['compra_bebida']?'Sí':'',
+            compras_snack: checkboxAnswers['compra_snack']?'Sí':'',
+            compras_preparado: checkboxAnswers['compra_preparado']?'Sí':'',
+            compras_cafe: checkboxAnswers['compra_cafe']?'Sí':'',
+            compras_otro: document.getElementById('txt-compra-otro')?.value?.trim()||'',
+            ambiente_limpieza: answers['es-amb-limpieza']||'',
+            ambiente_clima: answers['es-amb-clima']||'',
+            ambiente_olor: answers['es-amb-olor']||'',
+            ambiente_ilum: answers['es-amb-ilum']||'',
+            ambiente_seguridad: answers['es-amb-seguridad']||'',
+            facilidad_buscar: answers['ws-buscar-prod']||'',
+            prod_variedad: answers['es-prod-variedad']||'',
+            prod_disponib: answers['es-prod-disponib']||'',
+            prod_calidad: answers['es-prod-calidad']||'',
+            prod_precio: answers['es-prod-precio']||'',
+            prod_precioview: answers['es-prod-precioview']||'',
+            prod_facilidad: answers['es-prod-facilidad']||'',
+            productos_deseados: document.getElementById('txt-prod-deseado')?.value?.trim()||'',
+            uso_foodservice: answers['foodservice']||'',
+            food_promesa_ok: answers['food_promesa']||'',
+            food_variedad: answers['es-food-variedad']||'',
+            food_calidad: answers['es-food-calidad']||'',
+            food_temp: answers['es-food-temp']||'',
+            food_tiempo: answers['es-food-tiempo']||'',
+            food_preciocalidad: answers['es-food-preciocalidad']||'',
+            food_acomp: answers['food_acomp']||'',
+            food_empaque: answers['food_empaque']||'',
+            food_deseado_comentario: document.getElementById('txt-food-deseado')?.value?.trim()||'',
+            tiempo_caja: answers['ws-caja-tiempo']||'',
+            metodo_pago_disponible: answers['pago_disponib']||'',
+            p13_comprobante: answers['ctr-comprobante']||'',
+            p13_bonus_promo: answers['ctr-bonus-ofrecido']||'',
+            p13_despedida: answers['ctr-despedida-listo']||'',
+            col_trato: answers['es-col-trato']||'',
+            col_saludo: answers['es-col-saludo']||'',
+            col_orienta: answers['es-col-orienta']||'',
+            col_imagen: answers['es-col-imagen']||'',
+            col_proact: answers['es-col-proact']||'',
+            col_ofrecimiento: answers['es-col-ofrecimiento']||'',
+            col_disponib: answers['es-col-disponib']||'',
+            usar_bano: checkboxAnswers['listo_bano']?'Sí':'',
+            usar_consumo: checkboxAnswers['listo_consumo']?'Sí':'',
+            bano_limpieza_cond: answers['ws-bano-cond']||'',
+            bano_jabon: answers['ctr-jabon']||'',
+            bano_papel: answers['ctr-papel']||'',
+            bano_agua: answers['ctr-agua']||'',
+            bano_comentario: document.getElementById('txt-listo-bano')?.value?.trim()||'',
+            zona_mesas: answers['es-zon-mesas']||'',
+            zona_limpieza: answers['es-zon-limpieza']||'',
+            zona_gral: answers['es-zon-gral']||'',
+            zona_comodidad: answers['es-zon-comodidad']||'',
+            zona_clima: answers['es-zon-clima']||'',
+            zona_olor: answers['es-zon-olor']||'',
+            mala_experiencia_prod: answers['mala_exp']||'',
+            resolucion_problema: answers['resolucion_problema']||'',
+            comentario_incidente: document.getElementById('txt-mala-exp-desc')?.value?.trim()||'',
+            reconoce_frecuente: answers['ws-reconoce-frecuente']||'',
+            valor_maximo_comentario: document.getElementById('txt-val-maximo')?.value?.trim()||'',
+            nps: answers['nps-listo']!==undefined ? answers['nps-listo'] : '',
+            nps_motivo: document.getElementById('txt-nps-motivo')?.value?.trim()||'',
+            csat: answers['es-csat-listo']||'',
+            ces: answers['ws-ces-listo']||'',
+            opinion_promos: document.getElementById('txt-feedback-promos')?.value?.trim()||'',
+            mejora: document.getElementById('txt-mejora-listo')?.value?.trim()||''
+        };
+    }
+
+    async function submitSurvey() {
+        try {
+            await fetch(SCRIPT_URL, { method:'POST', body:JSON.stringify(buildPayload()), mode:'no-cors' });
+        } catch(e) { console.error(e); }
+        go(13);
+    }
+
+    updateProgress();
+</script>
+</body>
+</html>
