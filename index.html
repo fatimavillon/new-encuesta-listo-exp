@@ -33,7 +33,6 @@
         #progress-fill { height: 100%; background: rgba(255,255,255,0.9); width: 0%; transition: width 0.55s cubic-bezier(.4,0,.2,1); border-radius: 0 3px 3px 0; }
         nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; z-index: 99; box-shadow: 0 2px 16px rgba(255,98,0,0.3); }
         .logo-slot { height: 36px; display: flex; align-items: center; gap: 12px; }
-        .primax-logo-img { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
         .logo-text { font-family: 'Clash Display', sans-serif; font-weight: 700; color: #fff; font-size: 20px; letter-spacing: -0.5px; }
         .step-pill { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.9); font-weight: 500; padding: 6px 14px; background: rgba(255,255,255,0.15); border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; }
         #survey-wrap { max-width: 660px; margin: 0 auto; padding: calc(var(--nav-h) + var(--progress-h) + 48px) 24px 80px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
@@ -166,47 +165,47 @@
             <div class="section-title"><span class="icon">🏪</span>Tus hábitos en Listo</div>
 
             <div class="sub-item">
-                <div class="sub-item-label">S1. ¿Qué te motivó a ingresar a Listo en tu última visita?</div>
+                <div class="sub-item-label">S1. ¿Qué te motivó a ingresar a Listo en tu última visita? [cite: 385, 386]</div>
                 <div class="choice-list" id="cl-motivacion">
-                    <button class="choice-item" onclick="selectSingle('motivacion',this,1,'cl-motivacion')"><span class="choice-num">A</span>Fui a cargar combustible y aproveché para entrar</button>
-                    <button class="choice-item" onclick="selectSingle('motivacion',this,2,'cl-motivacion')"><span class="choice-num">B</span>Fui específicamente a la tienda</button>
-                    <button class="choice-item" onclick="selectSingle('motivacion',this,3,'cl-motivacion')"><span class="choice-num">C</span>Vi algo que me llamó la atención desde afuera</button>
-                    <button class="choice-item" onclick="selectSingle('motivacion',this,4,'cl-motivacion')"><span class="choice-num">D</span>Es parte de mi rutina habitual</button>
-                    <button class="choice-item" onclick="selectSingle('motivacion',this,5,'cl-motivacion')"><span class="choice-num">E</span>Otro</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,1,'cl-motivacion')"><span class="choice-num">A</span>Fui a cargar combustible y aproveché para entrar [cite: 387]</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,2,'cl-motivacion')"><span class="choice-num">B</span>Fui específicamente a la tienda [cite: 388]</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,3,'cl-motivacion')"><span class="choice-num">C</span>Vi algo que me llamó la atención desde afuera [cite: 389]</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,4,'cl-motivacion')"><span class="choice-num">D</span>Es parte de mi rutina habitual [cite: 390]</button>
+                    <button class="choice-item" onclick="selectSingle('motivacion',this,5,'cl-motivacion')"><span class="choice-num">E</span>Otro [cite: 391]</button>
                 </div>
                 <div class="cond-block" id="cond-motivacion-otro">
-                    <div class="sub-item-label">Especifica tu motivo:</div>
+                    <div class="sub-item-label">Especifica tu motivo: [cite: 391]</div>
                     <input type="text" class="data-input" id="txt-motivacion-otro" placeholder="Escribe aquí tu motivo…">
                 </div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">S2. ¿Con qué frecuencia visitas Tienda Listo?</div>
+                <div class="sub-item-label">S2. ¿Con qué frecuencia visitas Tienda Listo? [cite: 392]</div>
                 <div class="choice-list" id="cl-frecuencia-listo">
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,1,'cl-frecuencia-listo')"><span class="choice-num">A</span>Todos los días o casi todos los días</button>
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,2,'cl-frecuencia-listo')"><span class="choice-num">B</span>Varias veces por semana</button>
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,3,'cl-frecuencia-listo')"><span class="choice-num">C</span>Una vez por semana</button>
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,4,'cl-frecuencia-listo')"><span class="choice-num">D</span>Cada dos semanas aproximadamente</button>
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,5,'cl-frecuencia-listo')"><span class="choice-num">E</span>Una vez al mes o menos</button>
-                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,6,'cl-frecuencia-listo')"><span class="choice-num">F</span>Otro</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,1,'cl-frecuencia-listo')"><span class="choice-num">A</span>Todos los días o casi todos los días [cite: 393]</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,2,'cl-frecuencia-listo')"><span class="choice-num">B</span>Varias veces por semana [cite: 394]</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,3,'cl-frecuencia-listo')"><span class="choice-num">C</span>Una vez por semana [cite: 395]</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,4,'cl-frecuencia-listo')"><span class="choice-num">D</span>Cada dos semanas aproximadamente [cite: 396]</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,5,'cl-frecuencia-listo')"><span class="choice-num">E</span>Una vez al mes o menos [cite: 397]</button>
+                    <button class="choice-item" onclick="selectSingle('frecuencia_listo',this,6,'cl-frecuencia-listo')"><span class="choice-num">F</span>Otro [cite: 398]</button>
                 </div>
                 <div class="cond-block" id="cond-frecuencia-otro">
-                    <div class="sub-item-label">Especifica tu frecuencia:</div>
+                    <div class="sub-item-label">Especifica tu frecuencia: [cite: 398]</div>
                     <input type="text" class="data-input" id="txt-frecuencia-otro" placeholder="Escribe aquí…">
                 </div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">S3. ¿Qué compraste hoy principalmente? [Elige hasta 2 opciones]</div>
+                <div class="sub-item-label">S3. ¿Qué compraste hoy principalmente? [Elige hasta 2 opciones] [cite: 142]</div>
                 <div class="checkbox-list" id="chk-compras-listo">
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_bebida',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Bebida (agua, gaseosa, jugo, energizante)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_snack',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Snack (galletas, chocolates, papas)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_preparado',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Alimento preparado (sandwich, comida caliente)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_cafe',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Café u otra bebida caliente</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_otro',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_bebida',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Bebida (agua, gaseosa, jugo, energizante) [cite: 143]</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_snack',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Snack (galletas, chocolates, papas) [cite: 144]</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_preparado',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Alimento preparado (sandwich, comida caliente) [cite: 145]</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_cafe',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Café u otra bebida caliente [cite: 146]</button>
+                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_otro',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro [cite: 147]</button>
                 </div>
                 <div class="cond-block" id="cond-compra-otro">
-                    <div class="sub-item-label">¿Qué otro producto compraste?</div>
+                    <div class="sub-item-label">¿Qué otro producto compraste? [cite: 147]</div>
                     <input type="text" class="data-input" id="txt-compra-otro" placeholder="Escribe aquí…">
                 </div>
             </div>
@@ -222,10 +221,10 @@
         <div class="q-label">Sección 2 · Ingreso y Ambiente</div>
         <div class="q-title">¿Cómo percibiste el <em>ambiente de la tienda</em>?</div>
         <div class="section-card">
-            <div class="section-title"><span class="icon">✨</span>P1. Aspectos del ambiente al ingresar</div>
+            <div class="section-title"><span class="icon">✨</span>P1. ¿Cómo calificarías los siguientes aspectos del ambiente de la tienda al ingresar? [cite: 399, 400]</div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Limpieza y orden de la tienda</div>
+                <div class="sub-item-label">Limpieza y orden de la tienda [cite: 402]</div>
                 <div class="emoji-scale" id="es-amb-limpieza">
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
@@ -236,7 +235,7 @@
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Temperatura / climatización</div>
+                <div class="sub-item-label">Temperatura / climatización [cite: 402]</div>
                 <div class="emoji-scale" id="es-amb-clima">
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
@@ -247,7 +246,7 @@
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Olor dentro de la tienda</div>
+                <div class="sub-item-label">Olor dentro de la tienda [cite: 402]</div>
                 <div class="emoji-scale" id="es-amb-olor">
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
@@ -258,7 +257,7 @@
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Iluminación</div>
+                <div class="sub-item-label">Iluminación [cite: 402]</div>
                 <div class="emoji-scale" id="es-amb-ilum">
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-ilum',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
@@ -269,7 +268,7 @@
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Percepción de seguridad al interior</div>
+                <div class="sub-item-label">Percepción de seguridad al interior de la tienda [cite: 402]</div>
                 <div class="emoji-scale" id="es-amb-seguridad">
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Malo</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-amb-seguridad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Malo</span></button>
@@ -291,7 +290,7 @@
         <div class="q-title">¿Fue fácil <em>encontrar tus productos</em>?</div>
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P2. ¿Qué tan fácil fue encontrar lo que buscabas dentro de la tienda?</div>
+                <div class="sub-item-label">P2. ¿Qué tan fácil fue encontrar lo que buscabas dentro de la tienda? [cite: 404, 405]</div>
                 <div class="word-scale" id="ws-buscar-prod">
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,1)"><span class="wn">1</span><span class="wl">Muy<br>difícil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
@@ -303,43 +302,36 @@
         </div>
 
         <div class="section-card">
-            <div class="section-title"><span class="icon">🛒</span>P3. Oferta de productos en Tienda Listo</div>
+            <div class="section-title"><span class="icon">🛒</span>P3. Califica los siguientes aspectos de la oferta de productos de Tienda Listo: [cite: 407, 408]</div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Variedad del mix de productos ofrecidos</div>
+                <div class="sub-item-label">Variedad del mix de productos de conveniencia ofrecidos [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-variedad"><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Disponibilidad del producto que buscabas</div>
+                <div class="sub-item-label">Disponibilidad del producto que buscabas [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-disponib"><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Calidad y frescura de los productos</div>
+                <div class="sub-item-label">Calidad y frescura de los productos [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-calidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Relación precio / calidad</div>
+                <div class="sub-item-label">Relación precio / calidad [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-precio"><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Claridad en la exhibición y señalización de precios</div>
+                <div class="sub-item-label">Claridad en la exhibición y señalización de precios [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-precioview"><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Facilidad para ubicar y encontrar los productos</div>
+                <div class="sub-item-label">Facilidad para ubicar y encontrar los productos [cite: 409]</div>
                 <div class="emoji-scale" id="es-prod-facilidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
-            </div>
-        </div>
-
-        <div class="section-card">
-            <div class="sub-item">
-                <div class="sub-item-label">P4. ¿Hay algún producto o categoría que te gustaría encontrar en Tienda Listo y que actualmente no está disponible? (Opcional)</div>
-                <textarea class="open-field open-field-sm" id="txt-prod-deseado" placeholder="Ej: Snacks saludables, alguna marca de bebida específica…"></textarea>
             </div>
         </div>
 
@@ -355,10 +347,10 @@
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P5. ¿Consumiste o compraste algún alimento o bebida preparada (café, sandwich, comida caliente)?</div>
+                <div class="sub-item-label">P5. ¿Consumiste o compraste algún alimento o bebida preparada (café, sandwich, comida caliente)? [cite: 411]</div>
                 <div class="yesno-row" id="yn-foodservice">
-                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'si')"><span class="yn-emoji">🍔</span>Sí</button>
-                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'no')"><span class="yn-emoji">❌</span>No</button>
+                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'si')"><span class="yn-emoji">🍔</span>Sí [cite: 412]</button>
+                    <button class="yn-btn" onclick="selectYNFood('yn-foodservice',this,'no')"><span class="yn-emoji">❌</span>No [cite: 413]</button>
                 </div>
             </div>
         </div>
@@ -368,61 +360,49 @@
 
             <div class="section-card" style="margin-top:10px">
                 <div class="sub-item">
-                    <div class="sub-item-label">P6. ¿Encontraste disponible el producto de foodservice que buscabas o que viste promocionado?</div>
+                    <div class="sub-item-label">P6. ¿Encontraste disponible el producto de foodservice que buscabas o que viste promocionado? [cite: 414]</div>
                     <div class="choice-list" id="cl-food-disp">
-                        <button class="choice-item" onclick="selectSingle('food_promesa',this,1,'cl-food-disp')"><span class="choice-num">1</span>Sí, encontré exactamente lo que buscaba</button>
-                        <button class="choice-item" onclick="selectSingle('food_promesa',this,2,'cl-food-disp')"><span class="choice-num">2</span>Vi la promoción pero el producto no estaba disponible</button>
-                        <button class="choice-item" onclick="selectSingle('food_promesa',this,3,'cl-food-disp')"><span class="choice-num">3</span>No había promoción — vine por hábito o impulso</button>
-                        <button class="choice-item" onclick="selectSingle('food_promesa',this,4,'cl-food-disp')"><span class="choice-num">4</span>No encontré lo que buscaba, elegí otra cosa</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,1,'cl-food-disp')"><span class="choice-num">1</span>Sí, encontré exactamente lo que buscaba [cite: 416]</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,2,'cl-food-disp')"><span class="choice-num">2</span>Vi la promoción pero el producto no estaba disponible [cite: 417]</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,3,'cl-food-disp')"><span class="choice-num">3</span>No había promoción, vine por hábito o impulso [cite: 418]</button>
+                        <button class="choice-item" onclick="selectSingle('food_promesa',this,4,'cl-food-disp')"><span class="choice-num">4</span>No encontré lo que buscaba, elegí otra cosa [cite: 419]</button>
                     </div>
                 </div>
             </div>
 
             <div class="section-card">
-                <div class="section-title"><span class="icon">🍽️</span>P7. Califica los siguientes aspectos de foodservice:</div>
+                <div class="section-title"><span class="icon">🍽️</span>P7. Califica los siguientes aspectos de la oferta de foodservice: [cite: 420]</div>
 
                 <div class="sub-item">
-                    <div class="sub-item-label">Variedad de opciones de foodservice disponibles</div>
+                    <div class="sub-item-label">Variedad de opciones de foodservice disponibles [cite: 422]</div>
                     <div class="emoji-scale" id="es-food-variedad"><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Calidad de los productos preparados</div>
+                    <div class="sub-item-label">Calidad de los productos preparados [cite: 422]</div>
                     <div class="emoji-scale" id="es-food-calidad"><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Temperatura adecuada del producto (caliente/frío)</div>
+                    <div class="sub-item-label">Temperatura adecuada del producto (caliente/frío) [cite: 422]</div>
                     <div class="emoji-scale" id="es-food-temp"><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Tiempo de preparación y entrega</div>
+                    <div class="sub-item-label">Tiempo de preparación y entrega [cite: 422]</div>
                     <div class="emoji-scale" id="es-food-tiempo"><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Relación precio / calidad</div>
+                    <div class="sub-item-label">Relación precio / calidad [cite: 422]</div>
                     <div class="emoji-scale" id="es-food-preciocalidad"><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
             </div>
 
             <div class="section-card">
                 <div class="sub-item">
-                    <div class="sub-item-label">P8. ¿Tuviste acceso a los acompañamientos que necesitabas (salsas, azúcar, servilletas)?</div>
+                    <div class="sub-item-label">P8. ¿Tuviste acceso a los acompañamientos que necesitabas (salsas, azúcar, servilletas, etc.)? [cite: 423]</div>
                     <div class="choice-list" id="cl-food-acomp">
-                        <button class="choice-item" onclick="selectSingle('food_acomp',this,1,'cl-food-acomp')"><span class="choice-num">A</span>Sí, estaban disponibles</button>
-                        <button class="choice-item" onclick="selectSingle('food_acomp',this,2,'cl-food-acomp')"><span class="choice-num">B</span>Sí, me facilitaron limitadamente</button>
-                        <button class="choice-item" onclick="selectSingle('food_acomp',this,3,'cl-food-acomp')"><span class="choice-num">C</span>No, no me facilitaron</button>
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,1,'cl-food-acomp')"><span class="choice-num">A</span>Sí, estaban disponibles [cite: 424]</button>
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,2,'cl-food-acomp')"><span class="choice-num">B</span>Sí, me facilitaron limitadamente [cite: 425]</button>
+                        <button class="choice-item" onclick="selectSingle('food_acomp',this,3,'cl-food-acomp')"><span class="choice-num">C</span>No, no me facilitaron [cite: 426]</button>
                     </div>
-                </div>
-                <div class="sub-item">
-                    <div class="sub-item-label">P9. ¿Tus productos fueron empacados y entregados correctamente (sin derrames, bolsas resistentes)?</div>
-                    <div class="choice-list" id="cl-food-empaque">
-                        <button class="choice-item" onclick="selectSingle('food_empaque',this,1,'cl-food-empaque')"><span class="choice-num">A</span>Sí</button>
-                        <button class="choice-item" onclick="selectSingle('food_empaque',this,2,'cl-food-empaque')"><span class="choice-num">B</span>No</button>
-                        <button class="choice-item" onclick="selectSingle('food_empaque',this,3,'cl-food-empaque')"><span class="choice-num">C</span>No aplica</button>
-                    </div>
-                </div>
-                <div class="sub-item">
-                    <div class="sub-item-label">P10. ¿Hay algún tipo de alimento o bebida preparada que te gustaría encontrar y que no está disponible? (Opcional)</div>
-                    <textarea class="open-field open-field-sm" id="txt-food-deseado" placeholder="Comentarios…"></textarea>
                 </div>
             </div>
         </div>
@@ -439,41 +419,13 @@
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P11. El tiempo de espera en caja fue razonable.</div>
+                <div class="sub-item-label">P11. El tiempo de espera en caja fue razonable. </div>
                 <div class="word-scale" id="ws-caja-tiempo">
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,3)"><span class="wn">3</span><span class="wl">Neutral</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,4)"><span class="wn">4</span><span class="wl">De<br>Acuerdo</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,5)"><span class="wn">5</span><span class="wl">Total<br>Acuerdo</span></button>
-                </div>
-            </div>
-
-            <div class="sub-item">
-                <div class="sub-item-label">P12. ¿El método de pago que prefieres estaba disponible?</div>
-                <div class="yesno-row" id="yn-pago-disponib">
-                    <button class="yn-btn" onclick="selectYNPago('yn-pago-disponib',this,'si')"><span class="yn-emoji">✅</span>Sí</button>
-                    <button class="yn-btn" onclick="selectYNPago('yn-pago-disponib',this,'no')"><span class="yn-emoji">❌</span>No</button>
-                </div>
-                <div class="cond-block" id="cond-pago-metodo">
-                    <div class="sub-item-label">12a. ¿Qué método te habría gustado usar?</div>
-                    <div class="checkbox-list" id="chk-pago-necesitado">
-                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_yape')"><span class="cb-box"><span class="cb-check">✓</span></span>Yape</button>
-                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_plin')"><span class="cb-box"><span class="cb-check">✓</span></span>Plin</button>
-                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_tarjeta')"><span class="cb-box"><span class="cb-check">✓</span></span>Tarjeta de débito/crédito</button>
-                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_efectivo')"><span class="cb-box"><span class="cb-check">✓</span></span>Efectivo</button>
-                        <button class="checkbox-item" onclick="toggleCheck(this,'pref_otro')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sub-item">
-                <div class="sub-item-label">P13. Durante el momento del pago y la despedida, indica si ocurrió:</div>
-                <div class="checklist-table">
-                    <div class="ct-header"><span>Aspecto</span><span>Sí</span><span>No</span></div>
-                    <div class="ct-row" id="ctr-comprobante"><div class="ct-label">El cajero te consultó si necesitabas boleta o factura antes de emitir</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-comprobante','si')" id="ctr-comprobante-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-comprobante','no')" id="ctr-comprobante-no"></div></div></div>
-                    <div class="ct-row" id="ctr-bonus-ofrecido"><div class="ct-label">El cajero te ofreció sumar puntos Bonus o alguna promoción del día</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-bonus-ofrecido','si')" id="ctr-bonus-ofrecido-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-bonus-ofrecido','no')" id="ctr-bonus-ofrecido-no"></div></div></div>
-                    <div class="ct-row" id="ctr-despedida-listo"><div class="ct-label">Fuiste despedido/a de forma cordial al finalizar tu compra</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-despedida-listo','si')" id="ctr-despedida-listo-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-despedida-listo','no')" id="ctr-despedida-listo-no"></div></div></div>
                 </div>
             </div>
         </div>
@@ -488,34 +440,34 @@
         <div class="q-label">Sección 6 · El Listero</div>
         <div class="q-title">Atención de nuestro <em>colaborador</em></div>
         <div class="section-card">
-            <div class="section-title"><span class="icon">🤝</span>P14. Califica la atención recibida por el colaborador de Listo:</div>
+            <div class="section-title"><span class="icon">🤝</span>P14. ¿Cómo calificarías la atención recibida por el colaborador de Tienda Listo durante tu visita? [cite: 433, 434]</div>
 
             <div class="sub-item">
-                <div class="sub-item-label">Amabilidad y trato durante la atención</div>
+                <div class="sub-item-label">Amabilidad y trato durante la atención </div>
                 <div class="emoji-scale" id="es-col-trato"><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Saludo de bienvenida y despedida</div>
+                <div class="sub-item-label">Saludo de bienvenida y despedida </div>
                 <div class="emoji-scale" id="es-col-saludo"><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Capacidad para orientar y absolver consultas</div>
+                <div class="sub-item-label">Capacidad para orientar y absolver consultas </div>
                 <div class="emoji-scale" id="es-col-orienta"><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Presentación e imagen personal del colaborador</div>
-                <div class="emoji-scale" id="es-col-imagen"><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,4 reflection)">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="sub-item-label">Presentación e imagen personal del colaborador </div>
+                <div class="emoji-scale" id="es-col-imagen"><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Proactividad (se acercó a ofrecer ayuda sin que lo buscaras)</div>
+                <div class="sub-item-label">Proactividad, se acercó a ofrecer ayuda sin que lo buscaras </div>
                 <div class="emoji-scale" id="es-col-proact"><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Ofrecimiento de promociones y beneficios Primax / Bonus</div>
+                <div class="sub-item-label">El cajero te ofreció sumar puntos Bonus o alguna promoción del día </div>
                 <div class="emoji-scale" id="es-col-ofrecimiento"><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
-                <div class="sub-item-label">Presencia disponible del colaborador para atenderte</div>
+                <div class="sub-item-label">Presencia disponible del colaborador para atenderte </div>
                 <div class="emoji-scale" id="es-col-disponib"><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
         </div>
@@ -531,11 +483,11 @@
         <div class="q-title">Uso de <em>servicios adicionales</em></div>
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P15. ¿Usaste alguno de estos servicios durante tu visita? [Marca todos los que apliquen]</div>
+                <div class="sub-item-label">P15. ¿Usaste alguno de estos servicios durante tu visita? [Marca todos los que apliquen] [cite: 437]</div>
                 <div class="checkbox-list" id="chk-servicios-listo">
-                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_bano')"><span class="cb-box"><span class="cb-check">✓</span></span>Baño</button>
-                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_consumo')"><span class="cb-box"><span class="cb-check">✓</span></span>Área de consumo / mesas / microondas</button>
-                    <button class="checkbox-item" onclick="toggleNingunoListo(this,'chk-servicios-listo','listo_ninguno')"><span class="cb-box"><span class="cb-check">✓</span></span>Ninguno</button>
+                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_bano')"><span class="cb-box"><span class="cb-check">✓</span></span>Baño [cite: 438]</button>
+                    <button class="checkbox-item" onclick="toggleCheckListo(this,'listo_consumo')"><span class="cb-box"><span class="cb-check">✓</span></span>Área de consumo / mesas / microondas [cite: 439]</button>
+                    <button class="checkbox-item" onclick="toggleNingunoListo(this,'chk-servicios-listo','listo_ninguno')"><span class="cb-box"><span class="cb-check">✓</span></span>Ninguno [cite: 440]</button>
                 </div>
             </div>
         </div>
@@ -544,7 +496,7 @@
             <div class="filter-badge">🚻 Servicio de Baños</div>
             <div class="section-card" style="margin-top:10px">
                 <div class="sub-item">
-                    <div class="sub-item-label">P16. ¿Cómo calificarías la limpieza y condición del baño?</div>
+                    <div class="sub-item-label">P16. ¿Cómo calificarías la limpieza y condición del baño? [cite: 441, 442]</div>
                     <div class="word-scale" id="ws-bano-cond">
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,1)"><span class="wn">1</span><span class="wl">Muy Malo</span></button>
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,2)"><span class="wn">2</span><span class="wl">Malo</span></button>
@@ -554,16 +506,16 @@
                     </div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">P17. ¿Encontraste disponibles los siguientes implementos en el baño?</div>
+                    <div class="sub-item-label">P17. ¿Encontraste disponibles los siguientes implementos en el baño? [cite: 444, 445]</div>
                     <div class="checklist-table">
                         <div class="ct-header"><span>Implemento</span><span>Sí</span><span>No</span></div>
-                        <div class="ct-row" id="ctr-jabon"><div class="ct-label">Jabón de manos</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','si')" id="ctr-jabon-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','no')" id="ctr-jabon-no"></div></div></div>
-                        <div class="ct-row" id="ctr-papel"><div class="ct-label">Papel higiénico / papel de manos</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','si')" id="ctr-papel-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','no')" id="ctr-papel-no"></div></div></div>
-                        <div class="ct-row" id="ctr-agua"><div class="ct-label">Agua en el grifo</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','si')" id="ctr-agua-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','no')" id="ctr-agua-no"></div></div></div>
+                        <div class="ct-row" id="ctr-jabon"><div class="ct-label">Jabón de manos [cite: 446]</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','si')" id="ctr-jabon-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-jabon','no')" id="ctr-jabon-no"></div></div></div>
+                        <div class="ct-row" id="ctr-papel"><div class="ct-label">Papel higiénico / papel de manos [cite: 446]</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','si')" id="ctr-papel-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-papel','no')" id="ctr-papel-no"></div></div></div>
+                        <div class="ct-row" id="ctr-agua"><div class="ct-label">Agua en el grifo [cite: 446]</div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','si')" id="ctr-agua-si"></div></div><div class="ct-cell"><div class="ct-radio" onclick="selectCtRow('ctr-agua','no')" id="ctr-agua-no"></div></div></div>
                     </div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">P18. ¿Te gustaría dejarnos algún comentario sobre el servicio de baños? (Opcional)</div>
+                    <div class="sub-item-label">P18. ¿Te gustaría dejarnos algún comentario sobre el servicio de baños? (Opcional) [cite: 447]</div>
                     <textarea class="open-field open-field-sm" id="txt-listo-bano" placeholder="Escribe aquí…"></textarea>
                 </div>
             </div>
@@ -572,30 +524,30 @@
         <div id="block-listo-consumo" style="display:none">
             <div class="filter-badge">☕ Área de consumo</div>
             <div class="section-card" style="margin-top:10px">
-                <div class="section-title"><span class="icon">🪑</span>P19. Califica los siguientes aspectos de la zona de consumo:</div>
+                <div class="section-title"><span class="icon">🪑</span>P19. Califica los siguientes aspectos del área de consumo: [cite: 450, 451]</div>
 
                 <div class="sub-item">
-                    <div class="sub-item-label">Disponibilidad de mesas y sillas</div>
+                    <div class="sub-item-label">Disponibilidad de mesas y sillas [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-mesas"><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Limpieza de mesas</div>
+                    <div class="sub-item-label">Limpieza de mesas [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-limpieza"><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Limpieza y orden general de la zona</div>
+                    <div class="sub-item-label">Limpieza y orden general de la zona [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-gral"><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Comodidad del espacio</div>
+                    <div class="sub-item-label">Comodidad del espacio [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-comodidad"><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Temperatura / climatización del área</div>
+                    <div class="sub-item-label">Temperatura / climatización del área [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-clima"><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
-                    <div class="sub-item-label">Olor en la zona de consumo</div>
+                    <div class="sub-item-label">Olor en la zona de consumo [cite: 452]</div>
                     <div class="emoji-scale" id="es-zon-olor"><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
             </div>
@@ -613,25 +565,7 @@
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P20. ¿Has tenido alguna mala experiencia con un producto de Tienda Listo (vencimiento, mala calidad, etc.)?</div>
-                <div class="yesno-row" id="yn-mala-exp">
-                    <button class="yn-btn" onclick="selectYNMala('yn-mala-exp',this,'si')"><span class="yn-emoji">⚠️</span>Sí</button>
-                    <button class="yn-btn" onclick="selectYNMala('yn-mala-exp',this,'no')"><span class="yn-emoji">❌</span>No</button>
-                </div>
-                <div class="cond-block" id="cond-resolucion">
-                    <div class="sub-item-label">21a. ¿Pudiste resolver esa situación fácilmente?</div>
-                    <div class="choice-list" id="cl-resolucion">
-                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,1,'cl-resolucion')"><span class="choice-num">1</span>Sí, fue resuelto sin problemas</button>
-                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,2,'cl-resolucion')"><span class="choice-num">2</span>Fue resuelto parcialmente</button>
-                        <button class="choice-item" onclick="selectSingle('resolucion_problema',this,3,'cl-resolucion')"><span class="choice-num">3</span>No pude resolverlo</button>
-                    </div>
-                    <div class="sub-item-label" style="margin-top:8px">Coméntanos brevemente qué sucedió:</div>
-                    <input type="text" class="data-input" id="txt-mala-exp-desc" placeholder="Detalle del incidente…">
-                </div>
-            </div>
-
-            <div class="sub-item">
-                <div class="sub-item-label">P22. Siento que Tienda Listo me reconoce como cliente frecuente y me ofrece beneficios por ello.</div>
+                <div class="sub-item-label">P22. Siento que Tienda Listo me reconoce como cliente frecuente y me ofrece beneficios por ello. </div>
                 <div class="word-scale" id="ws-reconoce-frecuente">
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
@@ -649,45 +583,12 @@
     </div>
 
     <div class="screen" id="s9">
-        <div class="q-label">Sección 9 · Atributos más valorados</div>
-        <div class="q-title">¿Qué es lo que <em>más valoras</em>?</div>
-
-        <div class="section-card">
-            <div class="sub-item">
-                <div class="sub-item-label">P23. De los siguientes aspectos de una tienda de conveniencia, ¿cuáles son los <strong>3 que más valoras</strong> al elegir dónde comprar? [Elige exactamente 3]</div>
-                <div class="checkbox-list" id="chk-atributos-listo">
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_mix',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Variedad del mix de productos ofrecidos</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_disp',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Disponibilidad del producto que buscas</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_calidad',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Calidad y frescura de los productos</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_precio',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Relación precio / calidad</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_atencion',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Atención y amabilidad del colaborador</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_pago',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Rapidez en el proceso de pago</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_food',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Calidad del foodservice (comida y bebidas preparadas)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_limpieza',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Limpieza y ambiente de la tienda</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_promos',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Promociones y ofertas atractivas</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'val_ubicacion',3,'chk-atributos-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Ubicación / cercanía de la tienda</button>
-                </div>
-            </div>
-
-            <div class="sub-item">
-                <div class="sub-item-label">P24. Y de los que elegiste, ¿cuál es el MÁS importante para ti?</div>
-                <textarea class="open-field open-field-sm" id="txt-val-maximo" placeholder="Escribe aquí el aspecto prioritario…"></textarea>
-            </div>
-        </div>
-
-        <div class="cta-wrap">
-            <button class="btn-back" onclick="go(8)">← Atrás</button>
-            <button class="btn-next" onclick="goNext(9,10)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-    </div>
-
-    <div class="screen" id="s10">
-        <div class="q-label">Sección 10 · Indicadores</div>
+        <div class="q-label">Sección 9 · Indicadores</div>
         <div class="q-title">Evaluación <em>Global</em></div>
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P25. ¿Con qué probabilidad recomendarías Tienda Listo a un familiar, amigo o colega?</div>
+                <div class="sub-item-label">P25. ¿Con qué probabilidad recomendarías Tienda Listo a un familiar, amigo o colega? [cite: 458, 459]</div>
                 <div class="nps-row" id="nps-listo">
                     <button class="nps-btn" onclick="selectNPS('nps-listo',this,0)">0</button>
                     <button class="nps-btn" onclick="selectNPS('nps-listo',this,1)">1</button>
@@ -701,16 +602,16 @@
                     <button class="nps-btn" onclick="selectNPS('nps-listo',this,9)">9</button>
                     <button class="nps-btn" onclick="selectNPS('nps-listo',this,10)">10</button>
                 </div>
-                <div class="scale-label-row"><span>← Nada probable (Detractor)</span><span>Muy probable (Promotor) →</span></div>
+                <div class="scale-label-row"><span>← Nada probable (Detractor) [cite: 460]</span><span>Muy probable (Promotor) → [cite: 460]</span></div>
 
-                <div class="sub-item-label" style="margin-top:10px">P25a. ¿Por qué elegiste ese número? (Opcional)</div>
+                <div class="sub-item-label" style="margin-top:10px">P25a. ¿Por qué elegiste ese número? (Opcional) [cite: 461]</div>
                 <textarea class="open-field open-field-sm" id="txt-nps-motivo" placeholder="Cuéntanos por qué…"></textarea>
             </div>
         </div>
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P26. Considerando tu última visita a Listo ¿cuán satisfecho/a quedaste con la experiencia vivida?</div>
+                <div class="sub-item-label">P26. Considerando tu última visita a Listo ¿cuán satisfecho/a quedaste con la experiencia vivida? [cite: 464, 465]</div>
                 <div class="emoji-scale" id="es-csat-listo">
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Insat.</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Insat.</span></button>
@@ -723,7 +624,7 @@
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P27. ¿Qué tan fácil fue hacer tu compra en Tienda Listo hoy?</div>
+                <div class="sub-item-label">P27. ¿Qué tan fácil fue hacer tu compra en Tienda Listo hoy? [cite: 468, 469]</div>
                 <div class="word-scale" id="ws-ces-listo">
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,1)"><span class="wn">1</span><span class="wl">Muy Difícil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
@@ -735,36 +636,36 @@
         </div>
 
         <div class="cta-wrap">
-            <button class="btn-back" onclick="go(9)">← Atrás</button>
-            <button class="btn-next" onclick="goNext(10,11)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="btn-back" onclick="go(8)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(9,10)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
     </div>
 
-    <div class="screen" id="s11">
+    <div class="screen" id="s10">
         <div class="q-label">Sección 11 y 12 · Cierre</div>
         <div class="q-title">Sugerencias y <em>Mejoras</em></div>
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P28. ¿Qué opinas sobre las promociones y ofertas disponibles en Tienda Listo? ¿Hay alguna oferta de otras tiendas de conveniencia que creas que Listo debería tener? (Opcional)</div>
+                <div class="sub-item-label">P28. ¿Qué opinas sobre las promociones y ofertas disponibles en Tienda Listo? ¿Hay alguna oferta de otras tiendas de conveniencia que te llame más la atención o que creas que Listo debería tener? (Opcional) [cite: 472, 473, 474]</div>
                 <textarea class="open-field" id="txt-feedback-promos" placeholder="Tus sugerencias sobre combos, descuentos…"></textarea>
             </div>
         </div>
 
         <div class="section-card">
             <div class="sub-item">
-                <div class="sub-item-label">P29. Si pudieras mejorar UN solo aspecto de tu experiencia en Tienda Listo, ¿cuál sería?</div>
+                <div class="sub-item-label">P29. Si pudieras mejorar UN solo aspecto de tu experiencia en Tienda Listo, ¿cuál sería? [cite: 477, 478]</div>
                 <textarea class="open-field" id="txt-mejora-listo" placeholder="Escribe aquí tu propuesta de mejora…"></textarea>
             </div>
         </div>
 
         <div class="cta-wrap">
-            <button class="btn-back" onclick="go(10)">← Atrás</button>
-            <button class="btn-next" onclick="go(12)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="btn-back" onclick="go(9)">← Atrás</button>
+            <button class="btn-next" onclick="goNext(10,11)">Siguiente <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
     </div>
 
-    <div class="screen" id="s12">
+    <div class="screen" id="s11">
         <div class="q-title">¡Casi <em>terminamos</em>!</div>
         <div class="q-sub">Déjanos tus datos para participar en el sorteo de la Giftcard de S/250.</div>
         <div class="section-card">
@@ -777,24 +678,24 @@
             </div>
         </div>
         <div class="cta-wrap">
-            <button class="btn-back" onclick="go(11)">← Atrás</button>
+            <button class="btn-back" onclick="go(10)">← Atrás</button>
             <button class="btn-next" onclick="validarYEnviar()">Finalizar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
     </div>
 
-    <div class="screen" id="s13">
+    <div class="screen" id="s12">
         <div style="display:flex;flex-direction:column;gap:16px">
             <div style="font-size:48px">🎉</div>
             <div class="ty-title">¡Gracias por<br>compartir tu<br><em style="font-style:normal;color:var(--orange)">opinión!</em></div>
             <div class="intro-divider"></div>
-            <div class="ty-sub">Tu opinión nos ayuda a mejorar cada día la experiencia en Tienda Listo. Ya estás participando en el sorteo. ¡Mucha suerte!</div>
+            <div class="ty-sub">Tu opinión nos ayuda a mejorar cada día la experiencia en Tienda Listo. Ya estás participando en el sorteo. ¡Mucha suerte! [cite: 477, 481]</div>
         </div>
     </div>
 
 </div>
 
 <script>
-    const TOTAL_STEPS = 13;
+    const TOTAL_STEPS = 12;
     let currentScreen = 0;
     const answers = {};
     const checkboxAnswers = {};
@@ -802,10 +703,9 @@
     const LABELS = {
         0:'Inicio', 1:'Segmentación', 2:'Ambiente', 3:'Recorrido',
         4:'Foodservice', 5:'Pago en Caja', 6:'Atención Colaborador', 7:'Servicios Adicionales',
-        8:'Post-Visita', 9:'Preferencias', 10:'Indicadores', 11:'Sugerencias', 12:'Mis Datos', 13:'¡Listo!'
+        8:'Post-Visita', 9:'Indicadores', 10:'Sugerencias', 11:'Mis Datos', 12:'¡Listo!'
     };
 
-    // Usa tu URL de Google Apps Script para almacenar las respuestas unificadas
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdlGsKq8lA_uwhYP0LHOUairl2zdMSBPY75GF1vY9AS5ngH52rae28ng7X-D_D_74d/exec";
 
     function go(n) {
@@ -837,20 +737,20 @@
             }
         }
         if (currentScreen === 3) {
-            if (!answers['ws-buscar-prod'] || !answers['es-prod-variedad'] || !answers['es-prod-disponib']) {
-                alert('Por favor responda las métricas de productos.');
+            if (!answers['ws-buscar-prod'] || !answers['es-prod-variedad'] || !answers['es-prod-disponib'] || !answers['es-prod-calidad'] || !answers['es-prod-precio'] || !answers['es-prod-precioview'] || !answers['es-prod-facilidad']) {
+                alert('Por favor califique todas las métricas de la oferta de productos.');
                 return false;
             }
         }
         if (currentScreen === 4 && answers['foodservice'] === 'si') {
-            if (!answers['food_promesa'] || !answers['es-food-calidad'] || !answers['food_acomp'] || !answers['food_empaque']) {
-                alert('Por favor completa los campos del módulo Foodservice.');
+            if (!answers['food_promesa'] || !answers['es-food-variedad'] || !answers['es-food-calidad'] || !answers['es-food-temp'] || !answers['es-food-tiempo'] || !answers['es-food-preciocalidad'] || !answers['food_acomp']) {
+                alert('Por favor completa las calificaciones del módulo Foodservice.');
                 return false;
             }
         }
         if (currentScreen === 5) {
-            if (!answers['ws-caja-tiempo'] || !answers['pago_disponib'] || !answers['ctr-comprobante'] || !answers['ctr-bonus-ofrecido'] || !answers['ctr-despedida-listo']) {
-                alert('Por favor complete la evaluación del proceso de pago.');
+            if (!answers['ws-caja-tiempo']) {
+                alert('Por favor evalúe si el tiempo de espera en caja fue razonable.');
                 return false;
             }
         }
@@ -872,20 +772,26 @@
                 alert('Por favor complete la calificación del baño.');
                 return false;
             }
-            if (usedConsumo && (!answers['es-zon-mesas'] || !answers['es-zon-limpieza'] || !answers['es-zon-gral'])) {
-                alert('Por favor califique los aspectos de la zona de consumo.');
+            if (usedConsumo && (!answers['es-zon-mesas'] || !answers['es-zon-limpieza'] || !answers['es-zon-gral'] || !answers['es-zon-comodidad'] || !answers['es-zon-clima'] || !answers['es-zon-olor'])) {
+                alert('Por favor califique todos los aspectos de la zona de consumo.');
                 return false;
             }
         }
         if (currentScreen === 8) {
-            if (!answers['mala_exp'] || (answers['mala_exp'] === 'si' && !answers['resolucion_problema']) || !answers['ws-reconoce-frecuente']) {
-                alert('Por favor complete los campos requeridos en esta sección.');
+            if (!answers['ws-reconoce-frecuente']) {
+                alert('Por favor responda si siente que Tienda Listo le reconoce como cliente frecuente.');
+                return false;
+            }
+        }
+        if (currentScreen === 9) {
+            if (answers['nps-listo'] === undefined || !answers['es-csat-listo'] || !answers['ws-ces-listo']) {
+                alert('Por favor complete los indicadores globales unificados (NPS, CSAT y CES).');
                 return false;
             }
         }
         if (currentScreen === 10) {
-            if (answers['nps-listo'] === undefined || !answers['es-csat-listo'] || !answers['ws-ces-listo']) {
-                alert('Por favor complete los indicadores NPS, CSAT y CES obligatorios.');
+            if (!document.getElementById('txt-mejora-listo').value.trim()) {
+                alert('Por favor, ingrese su sugerencia de mejora para continuar.');
                 return false;
             }
         }
@@ -936,31 +842,12 @@
         document.getElementById('block-foodservice').style.display = (val === 'si') ? 'block' : 'none';
     }
 
-    function selectYNPago(groupId, btn, val) {
-        document.querySelectorAll('#' + groupId + ' .yn-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        answers['pago_disponib'] = val;
-        document.getElementById('cond-pago-metodo').classList.toggle('visible', val === 'no');
-    }
-
-    function selectYNMala(groupId, btn, val) {
-        document.querySelectorAll('#' + groupId + ' .yn-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        answers['mala_exp'] = val;
-        document.getElementById('cond-resolucion').classList.toggle('visible', val === 'si');
-    }
-
     function selectCtRow(rowId, val) {
         const si = document.getElementById(rowId+'-si');
         const no = document.getElementById(rowId+'-no');
         si.className = 'ct-radio' + (val==='si' ? ' selected-si' : '');
         no.className = 'ct-radio' + (val==='no' ? ' selected-no' : '');
         answers[rowId] = val;
-    }
-
-    function toggleCheck(btn, key) {
-        btn.classList.toggle('selected');
-        checkboxAnswers[key] = btn.classList.contains('selected');
     }
 
     function toggleCheckListo(btn, key) {
@@ -1014,6 +901,7 @@
 
     function buildPayload() {
         return {
+            timestamp: new Date().toLocaleString("es-PE", {timeZone: "America/Lima"}),
             fuente: 'tienda_listo',
             dni: document.getElementById('dni').value.trim(),
             celular: document.getElementById('celular').value.trim(),
@@ -1021,16 +909,19 @@
             motivacion_otro: document.getElementById('txt-motivacion-otro')?.value?.trim()||'',
             frecuencia_listo: answers['frecuencia_listo']||'',
             frecuencia_otro: document.getElementById('txt-frecuencia-otro')?.value?.trim()||'',
+
             compras_bebida: checkboxAnswers['compra_bebida']?'Sí':'',
             compras_snack: checkboxAnswers['compra_snack']?'Sí':'',
             compras_preparado: checkboxAnswers['compra_preparado']?'Sí':'',
             compras_cafe: checkboxAnswers['compra_cafe']?'Sí':'',
-            compras_otro: document.getElementById('txt-compra-otro')?.value?.trim()||'',
+            compras_otro_desc: document.getElementById('txt-compra-otro')?.value?.trim()||'',
+
             ambiente_limpieza: answers['es-amb-limpieza']||'',
             ambiente_clima: answers['es-amb-clima']||'',
             ambiente_olor: answers['es-amb-olor']||'',
             ambiente_ilum: answers['es-amb-ilum']||'',
             ambiente_seguridad: answers['es-amb-seguridad']||'',
+
             facilidad_buscar: answers['ws-buscar-prod']||'',
             prod_variedad: answers['es-prod-variedad']||'',
             prod_disponib: answers['es-prod-disponib']||'',
@@ -1039,6 +930,7 @@
             prod_precioview: answers['es-prod-precioview']||'',
             prod_facilidad: answers['es-prod-facilidad']||'',
             productos_deseados: document.getElementById('txt-prod-deseado')?.value?.trim()||'',
+
             uso_foodservice: answers['foodservice']||'',
             food_promesa_ok: answers['food_promesa']||'',
             food_variedad: answers['es-food-variedad']||'',
@@ -1047,20 +939,17 @@
             food_tiempo: answers['es-food-tiempo']||'',
             food_preciocalidad: answers['es-food-preciocalidad']||'',
             food_acomp: answers['food_acomp']||'',
-            food_empaque: answers['food_empaque']||'',
-            food_deseado_comentario: document.getElementById('txt-food-deseado')?.value?.trim()||'',
+
             tiempo_caja: answers['ws-caja-tiempo']||'',
-            metodo_pago_disponible: answers['pago_disponib']||'',
-            p13_comprobante: answers['ctr-comprobante']||'',
-            p13_bonus_promo: answers['ctr-bonus-ofrecido']||'',
-            p13_despedida: answers['ctr-despedida-listo']||'',
+
             col_trato: answers['es-col-trato']||'',
             col_saludo: answers['es-col-saludo']||'',
             col_orienta: answers['es-col-orienta']||'',
             col_imagen: answers['es-col-imagen']||'',
             col_proact: answers['es-col-proact']||'',
-            col_ofrecimiento: answers['es-col-ofrecimiento']||'',
+            col_ofrecimiento_bonus: answers['es-col-ofrecimiento']||'',
             col_disponib: answers['es-col-disponib']||'',
+
             usar_bano: checkboxAnswers['listo_bano']?'Sí':'',
             usar_consumo: checkboxAnswers['listo_consumo']?'Sí':'',
             bano_limpieza_cond: answers['ws-bano-cond']||'',
@@ -1068,17 +957,16 @@
             bano_papel: answers['ctr-papel']||'',
             bano_agua: answers['ctr-agua']||'',
             bano_comentario: document.getElementById('txt-listo-bano')?.value?.trim()||'',
+
             zona_mesas: answers['es-zon-mesas']||'',
             zona_limpieza: answers['es-zon-limpieza']||'',
             zona_gral: answers['es-zon-gral']||'',
             zona_comodidad: answers['es-zon-comodidad']||'',
             zona_clima: answers['es-zon-clima']||'',
             zona_olor: answers['es-zon-olor']||'',
-            mala_experiencia_prod: answers['mala_exp']||'',
-            resolucion_problema: answers['resolucion_problema']||'',
-            comentario_incidente: document.getElementById('txt-mala-exp-desc')?.value?.trim()||'',
+
             reconoce_frecuente: answers['ws-reconoce-frecuente']||'',
-            valor_maximo_comentario: document.getElementById('txt-val-maximo')?.value?.trim()||'',
+
             nps: answers['nps-listo']!==undefined ? answers['nps-listo'] : '',
             nps_motivo: document.getElementById('txt-nps-motivo')?.value?.trim()||'',
             csat: answers['es-csat-listo']||'',
@@ -1092,10 +980,8 @@
         try {
             await fetch(SCRIPT_URL, { method:'POST', body:JSON.stringify(buildPayload()), mode:'no-cors' });
         } catch(e) { console.error(e); }
-        go(13);
+        go(12);
     }
-
-    updateProgress();
 </script>
 </body>
 </html>
