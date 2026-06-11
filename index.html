@@ -149,15 +149,17 @@
 
 <div id="survey-wrap">
 
+    <!-- S0: INTRO -->
     <div class="screen active" id="s0">
         <div class="intro-title">En <em>Tienda Listo</em>,<br>Tu experiencia<br><em>nos mueve</em>.</div>
         <div class="intro-divider"></div>
-        <div class="intro-desc">Queremos seguir mejorando tu experiencia en nuestras tiendas. Esta encuesta toma aproximadamente 5 minutes y tus respuestas son completamente anónimas. ¡Al finalizar participas por una Giftcard de S/250!</div>
+        <div class="intro-desc">Queremos seguir mejorando tu experiencia en nuestras tiendas. Esta encuesta toma aproximadamente 5 minutos y tus respuestas son completamente anónimas. ¡Al finalizar participas por una Giftcard de S/250!</div>
         <div class="cta-wrap">
             <button class="btn-next" onclick="go(1)">Comenzar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
     </div>
 
+    <!-- S1: DECISIÓN Y SEGMENTACIÓN (CORREGIDO FASE 3 SIN S3) -->
     <div class="screen" id="s1">
         <div class="q-label">Sección 1 · Segmentación</div>
         <div class="q-title">Cuéntanos sobre tu<br><em>visita de hoy</em></div>
@@ -195,21 +197,6 @@
                 </div>
             </div>
 
-            <div class="sub-item">
-                <div class="sub-item-label">S3. ¿Qué compraste hoy principalmente? [Elige hasta 2 opciones]</div>
-                <div class="checkbox-list" id="chk-compras-listo">
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_bebida',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Bebida (agua, gaseosa, jugo, energizante)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_snack',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Snack (galletas, chocolates, papas)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_preparado',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Alimento preparado (sandwich, comida caliente)</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_cafe',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Café u otra bebida caliente</button>
-                    <button class="checkbox-item" onclick="toggleCheckMax(this,'compra_otro',2,'chk-compras-listo')"><span class="cb-box"><span class="cb-check">✓</span></span>Otro</button>
-                </div>
-                <div class="cond-block" id="cond-compra-otro">
-                    <div class="sub-item-label">¿Qué otro producto compraste?</div>
-                    <input type="text" class="data-input" id="txt-compra-otro" placeholder="Escribe aquí…">
-                </div>
-            </div>
-
         </div>
         <div class="cta-wrap">
             <button class="btn-back" onclick="go(0)">← Atrás</button>
@@ -217,6 +204,7 @@
         </div>
     </div>
 
+    <!-- S2: INGRESO Y AMBIENTE -->
     <div class="screen" id="s2">
         <div class="q-label">Sección 2 · Ingreso y Ambiente</div>
         <div class="q-title">¿Cómo percibiste el <em>ambiente de la tienda</em>?</div>
@@ -285,6 +273,7 @@
         </div>
     </div>
 
+    <!-- S3: RECORRIDO Y BÚSQUEDA DE PRODUCTOS -->
     <div class="screen" id="s3">
         <div class="q-label">Sección 3 · Recorrido y Selección</div>
         <div class="q-title">¿Fue fácil <em>encontrar tus productos</em>?</div>
@@ -294,7 +283,7 @@
                 <div class="word-scale" id="ws-buscar-prod">
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,1)"><span class="wn">1</span><span class="wl">Muy<br>difícil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
-                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,373)">3</span><span class="wl">Regular</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,4)"><span class="wn">4</span><span class="wl">Fácil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-buscar-prod',this,5)"><span class="wn">5</span><span class="wl">Muy<br>fácil</span></button>
                 </div>
@@ -306,32 +295,32 @@
 
             <div class="sub-item">
                 <div class="sub-item-label">Variedad del mix de productos de conveniencia ofrecidos</div>
-                <div class="emoji-scale" id="es-prod-variedad"><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-variedad"><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
                 <div class="sub-item-label">Disponibilidad del producto que buscabas</div>
-                <div class="emoji-scale" id="es-prod-disponib"><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-disponib"><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
                 <div class="sub-item-label">Calidad y frescura de los productos</div>
-                <div class="emoji-scale" id="es-prod-calidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-calidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
                 <div class="sub-item-label">Relación precio / calidad</div>
-                <div class="emoji-scale" id="es-prod-precio"><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-precio"><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precio',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
                 <div class="sub-item-label">Claridad en la exhibición y señalización de precios</div>
-                <div class="emoji-scale" id="es-prod-precioview"><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-precioview"><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-precioview',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
 
             <div class="sub-item">
                 <div class="sub-item-label">Facilidad para ubicar y encontrar los productos</div>
-                <div class="emoji-scale" id="es-prod-facilidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-prod-facilidad"><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-prod-facilidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
         </div>
 
@@ -341,6 +330,7 @@
         </div>
     </div>
 
+    <!-- S4: FOODSERVICE -->
     <div class="screen" id="s4">
         <div class="q-label">Sección 4 · Foodservice</div>
         <div class="q-title">Sobre los <em>alimentos preparados</em></div>
@@ -375,23 +365,23 @@
 
                 <div class="sub-item">
                     <div class="sub-item-label">Variedad de opciones de foodservice disponibles</div>
-                    <div class="emoji-scale" id="es-food-variedad"><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-food-variedad"><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-variedad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Calidad de los productos preparados</div>
-                    <div class="emoji-scale" id="es-food-calidad"><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-food-calidad"><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-calidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Temperatura adecuada del producto (caliente/frío)</div>
-                    <div class="emoji-scale" id="es-food-temp"><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-food-temp"><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-temp',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Tiempo de preparación y entrega</div>
-                    <div class="emoji-scale" id="es-food-tiempo"><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-food-tiempo"><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-tiempo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Relación precio / calidad</div>
-                    <div class="emoji-scale" id="es-food-preciocalidad"><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-food-preciocalidad"><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-food-preciocalidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
             </div>
 
@@ -413,6 +403,7 @@
         </div>
     </div>
 
+    <!-- S5: PROCESO DE PAGO -->
     <div class="screen" id="s5">
         <div class="q-label">Sección 5 · Pago</div>
         <div class="q-title">¿Cómo fue la <em>experiencia en caja</em>?</div>
@@ -423,7 +414,7 @@
                 <div class="word-scale" id="ws-caja-tiempo">
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
-                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,373)">3</span><span class="wl">Neutral</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,3)"><span class="wn">3</span><span class="wl">Neutral</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,4)"><span class="wn">4</span><span class="wl">De<br>Acuerdo</span></button>
                     <button class="word-btn" onclick="selectWord('ws-caja-tiempo',this,5)"><span class="wn">5</span><span class="wl">Total<br>Acuerdo</span></button>
                 </div>
@@ -436,6 +427,7 @@
         </div>
     </div>
 
+    <!-- S6: ATENCIÓN DEL COLABORADOR -->
     <div class="screen" id="s6">
         <div class="q-label">Sección 6 · El Listero</div>
         <div class="q-title">Atención de nuestro <em>colaborador</em></div>
@@ -444,31 +436,31 @@
 
             <div class="sub-item">
                 <div class="sub-item-label">Amabilidad y trato durante la atención</div>
-                <div class="emoji-scale" id="es-col-trato"><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-trato"><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-trato',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">Saludo de bienvenida y despedida</div>
-                <div class="emoji-scale" id="es-col-saludo"><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-saludo"><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-saludo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">Capacidad para orientar y absolver consultas</div>
-                <div class="emoji-scale" id="es-col-orienta"><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-orienta"><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-orienta',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">Presentación e imagen personal del colaborador</div>
-                <div class="emoji-scale" id="es-col-imagen"><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-imagen"><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-imagen',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">Proactividad, se acercó a ofrecer ayuda sin que lo buscaras</div>
-                <div class="emoji-scale" id="es-col-proact"><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-proact"><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-proact',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">El cajero te ofreció sumar puntos Bonus o alguna promoción del día</div>
-                <div class="emoji-scale" id="es-col-ofrecimiento"><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-ofrecimiento"><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-ofrecimiento',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
             <div class="sub-item">
                 <div class="sub-item-label">Presencia disponible del colaborador para atenderte</div>
-                <div class="emoji-scale" id="es-col-disponib"><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                <div class="emoji-scale" id="es-col-disponib"><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-col-disponib',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
             </div>
         </div>
 
@@ -478,6 +470,7 @@
         </div>
     </div>
 
+    <!-- S7: SERVICIOS COMPLEMENTARIOS Y ÁREA DE CONSUMO -->
     <div class="screen" id="s7">
         <div class="q-label">Sección 7 · Áreas de Consumo</div>
         <div class="q-title">Uso de <em>servicios adicionales</em></div>
@@ -500,7 +493,7 @@
                     <div class="word-scale" id="ws-bano-cond">
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,1)"><span class="wn">1</span><span class="wl">Muy Malo</span></button>
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,2)"><span class="wn">2</span><span class="wl">Malo</span></button>
-                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,373)">3</span><span class="wl">Regular</span></button>
+                        <button class="word-btn" onclick="selectWord('ws-bano-cond',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,4)"><span class="wn">4</span><span class="wl">Bueno</span></button>
                         <button class="word-btn" onclick="selectWord('ws-bano-cond',this,5)"><span class="wn">5</span><span class="wl">Excelente</span></button>
                     </div>
@@ -528,27 +521,27 @@
 
                 <div class="sub-item">
                     <div class="sub-item-label">Disponibilidad de mesas y sillas</div>
-                    <div class="emoji-scale" id="es-zon-mesas"><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-mesas"><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-mesas',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Limpieza de mesas</div>
-                    <div class="emoji-scale" id="es-zon-limpieza"><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-limpieza"><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-limpieza',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Limpieza y orden general de la zona</div>
-                    <div class="emoji-scale" id="es-zon-gral"><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-gral"><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-gral',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Comodidad del espacio</div>
-                    <div class="emoji-scale" id="es-zon-comodidad"><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-comodidad"><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-comodidad',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Temperatura / climatización del área</div>
-                    <div class="emoji-scale" id="es-zon-clima"><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-clima"><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-clima',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
                 <div class="sub-item">
                     <div class="sub-item-label">Olor en la zona de consumo</div>
-                    <div class="emoji-scale" id="es-zon-olor"><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
+                    <div class="emoji-scale" id="es-zon-olor"><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,4)"><span class="cb-emoji">😊</span><span class="eb-num">4</span></button><button class="emoji-btn" onclick="selectEmoji('es-zon-olor',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span></button></div>
                 </div>
             </div>
         </div>
@@ -559,6 +552,7 @@
         </div>
     </div>
 
+    <!-- S8: LEALTAD -->
     <div class="screen" id="s8">
         <div class="q-label">Sección 8 · Post-Visita</div>
         <div class="q-title">Tu experiencia a <em>largo plazo</em></div>
@@ -569,7 +563,7 @@
                 <div class="word-scale" id="ws-reconoce-frecuente">
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,1)"><span class="wn">1</span><span class="wl">Total<br>desac.</span></button>
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,2)"><span class="wn">2</span><span class="wl">Desac.</span></button>
-                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,373)">3</span><span class="wl">Neutral</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,3)"><span class="wn">3</span><span class="wl">Neutral</span></button>
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,4)"><span class="wn">4</span><span class="wl">De<br>Acuerdo</span></button>
                     <button class="word-btn" onclick="selectWord('ws-reconoce-frecuente',this,5)"><span class="wn">5</span><span class="wl">Total<br>Acuerdo</span></button>
                 </div>
@@ -582,6 +576,7 @@
         </div>
     </div>
 
+    <!-- S9: METRICAS GLOBAL INDICADORES -->
     <div class="screen" id="s9">
         <div class="q-label">Sección 9 · Indicadores</div>
         <div class="q-title">Evaluación <em>Global</em></div>
@@ -615,7 +610,7 @@
                 <div class="emoji-scale" id="es-csat-listo">
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,1)"><span class="eb-emoji">😤</span><span class="eb-num">1</span><span class="eb-word">Muy Insat.</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,2)"><span class="eb-emoji">😕</span><span class="eb-num">2</span><span class="eb-word">Insat.</span></button>
-                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,3)">😐</span><span class="eb-num">3</span><span class="eb-word">Neutral</span></button>
+                    <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,3)"><span class="eb-emoji">😐</span><span class="eb-num">3</span><span class="eb-word">Neutral</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,4)"><span class="eb-emoji">😊</span><span class="eb-num">4</span><span class="eb-word">Satisf.</span></button>
                     <button class="emoji-btn" onclick="selectEmoji('es-csat-listo',this,5)"><span class="eb-emoji">🤩</span><span class="eb-num">5</span><span class="eb-word">Muy Sat.</span></button>
                 </div>
@@ -628,7 +623,7 @@
                 <div class="word-scale" id="ws-ces-listo">
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,1)"><span class="wn">1</span><span class="wl">Muy Difícil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,2)"><span class="wn">2</span><span class="wl">Difícil</span></button>
-                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,373)">3</span><span class="wl">Regular</span></button>
+                    <button class="word-btn" onclick="selectWord('ws-ces-listo',this,3)"><span class="wn">3</span><span class="wl">Regular</span></button>
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,4)"><span class="wn">4</span><span class="wl">Fácil</span></button>
                     <button class="word-btn" onclick="selectWord('ws-ces-listo',this,5)"><span class="wn">5</span><span class="wl">Muy Fácil</span></button>
                 </div>
@@ -641,6 +636,7 @@
         </div>
     </div>
 
+    <!-- S10: SUGERENCIAS ABIERTAS -->
     <div class="screen" id="s10">
         <div class="q-label">Sección 11 y 12 · Cierre</div>
         <div class="q-title">Sugerencias y <em>Mejoras</em></div>
@@ -665,6 +661,7 @@
         </div>
     </div>
 
+    <!-- S11: FORMULARIO PARTICIPANTES -->
     <div class="screen" id="s11">
         <div class="q-title">¡Casi <em>terminamos</em>!</div>
         <div class="q-sub">Déjanos tus datos para participar en el sorteo de la Giftcard de S/250.</div>
@@ -683,6 +680,7 @@
         </div>
     </div>
 
+    <!-- S12: GRACIAS FINAL -->
     <div class="screen" id="s12">
         <div style="display:flex;flex-direction:column;gap:16px">
             <div style="font-size:48px">🎉</div>
@@ -833,13 +831,6 @@
         answers[groupId] = val;
     }
 
-    // Corregido: removida la llamada de la función vieja de la rapidez de pago
-    function selectWordPago(groupId, btn, val) {
-        document.querySelectorAll('#'+groupId+' .word-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        answers[groupId] = val;
-    }
-
     function selectNPS(groupId, btn, val) {
         document.querySelectorAll('#'+groupId+' .nps-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
@@ -892,10 +883,6 @@
         }
         btn.classList.toggle('selected');
         checkboxAnswers[key] = btn.classList.contains('selected');
-
-        if(key.startsWith('compra_')) {
-            document.getElementById('cond-compra-otro').classList.toggle('visible', checkboxAnswers['compra_otro']);
-        }
     }
 
     function validarYEnviar() {
@@ -920,12 +907,6 @@
             motivacion_otro: document.getElementById('txt-motivacion-otro')?.value?.trim()||'',
             frecuencia_listo: answers['frecuencia_listo']||'',
             frecuencia_otro: document.getElementById('txt-frecuencia-otro')?.value?.trim()||'',
-
-            compras_bebida: checkboxAnswers['compra_bebida']?'Sí':'',
-            compras_snack: checkboxAnswers['compra_snack']?'Sí':'',
-            compras_preparado: checkboxAnswers['compra_preparado']?'Sí':'',
-            compras_cafe: checkboxAnswers['compra_cafe']?'Sí':'',
-            compras_otro_desc: document.getElementById('txt-compra-otro')?.value?.trim()||'',
 
             ambiente_limpieza: answers['es-amb-limpieza']||'',
             ambiente_clima: answers['es-amb-clima']||'',
